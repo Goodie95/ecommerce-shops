@@ -1,0 +1,202 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+/* Header Container */
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;  /* Arrange elements side by side */
+    justify-content: flex-start; /* Align elements to the left */
+    align-items: center; /* Align items vertically in the center */
+    padding: 20px 0; /* Add space at the top and bottom */
+    background: #ffffff;
+}
+
+/* Logo */
+.header .top_header {
+    display: flex;
+    flex-direction: row; /* Align logo and menu in a row */
+    align-items: center; /* Align logo and menu vertically */
+    width: auto;  /* Adjust to content width */
+    margin-right: 50px;  /* Add space between the logo and menu */
+    margin-left: 70px;  /* Adjust space to the left side */
+}
+
+/* Logo Image */
+.header .top_header .logo img {
+    width: 155px;  /* Logo width */
+    height: 63px;  /* Logo height */
+}
+
+/* Menu */
+.menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 15px;
+    margin-left: 50px;
+    gap: 5px; /* Space between the equal sign and the Menu text */
+    
+    background: #f5f5f5bf;
+    border-radius: 70px;
+}
+
+/* Menu Text */
+.menu span {
+    font-size: 14px;   /* Adjust text size */
+    font-weight: bold;
+    color: #318CE7;    /* Custom blue color for the text */
+}
+
+/* Equal Sign in Menu */
+.equal-sign {
+    margin-right: 8px; /* Adds space between ≡ and Menu */
+    font-size: 18px;   /* Make the ≡ sign slightly larger */
+    color: #318CE7;    /* Custom blue color for the ≡ sign */
+}
+
+/* Input Container */
+.input-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 16px;
+    gap: 24px;
+    
+    width: 675px;
+    height: 50px;
+    margin-left: 30px; /* Add space between the menu and input field */
+    
+    background: #f5f5f5b4;
+    border-radius: 108px;
+    box-sizing: border-box;
+}
+
+/* Input Field */
+.input {
+    width: 100%;  /* Full width of the container */
+    height: 100%; /* Full height of the container */
+    border: none;
+    border-radius: 108px; /* Rounded corners */
+    padding: 0 16px;
+    font-size: 16px;
+    outline: none;  /* Remove the outline when focused */
+    background: transparent; /* Transparent background */
+    color: #333;  /* Dark text color */
+}
+
+/* Common styles for both menu and search elements */
+.search-menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; /* Center content horizontally */
+  padding: 5px 3px;
+  gap: 1px; /* Space between icon and text */
+  background: #f5f5f5bf; /* Light grey background */
+  border-radius: 90px; /* Rounded corners */
+  width: auto; /* Automatically adjust width based on content */
+  height: 30px; /* Fixed height */
+  cursor: pointer; /* Pointer cursor for interactivity */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+  margin-left: 40px;
+}
+
+/* Text and icon colors */
+.menu span,
+.search-menu span {
+  font-size: 14px; /* Adjust text size */
+  font-weight: bold;
+  color: #318ce7; /* Custom blue color */
+}
+
+/* Icon styles */
+.equal-sign,
+.search-icon {
+  font-size: 25px; /* Make the icons slightly larger */
+  color: #318ce7; /* Match text color */
+}
+/* Separator styles */
+.separator {
+    font-size: 15px; /* Same size as the icon */
+    font-weight: 100;
+    color: #ffe6e6; /* Light grey color for the separator */
+    margin-left: 5px; /* Space between icon and separator */
+  }
+.icon-menu {
+    display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; /* Center content horizontally */
+  padding: 5px 3px;
+  gap: 1px; /* Space between icon and text */
+  background: #f5f5f5bf; /* Light grey background */
+  border-radius: 90px; /* Rounded corners */
+  width: auto; /* Automatically adjust width based on content */
+  height: 30px; /* Fixed height */
+  cursor: pointer; /* Pointer cursor for interactivity */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+  margin-left: 10px;
+}
+.bag-icon {
+    font-size: 25px; /* Make the icons slightly larger */
+    color: #318ce7; /* Match text color */
+  }
+
+  .account-menu {
+    display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; /* Center content horizontally */
+  padding: 5px 3px;
+  gap: 1px; /* Space between icon and text */
+  background: #f5f5f5bf; /* Light grey background */
+  border-radius: 90px; /* Rounded corners */
+  width: auto; /* Automatically adjust width based on content */
+  height: 30px; /* Fixed height */
+  cursor: pointer; /* Pointer cursor for interactivity */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+  margin-left: 10px;
+}
+.account-icon {
+    font-size: 25px; /* Make the icons slightly larger */
+    color: #318ce7; /* Match text color */
+  }
+  .input-container {
+    display: flex;            /* Use flexbox layout */
+    align-items: center;      /* Vertically center the items */
+    padding: 16px;
+    gap: 10px;                /* Space between "All items" and search input */
+  }
+  
+  .all-items {
+    font-size: 16px;          /* Font size */
+    color: #333;              /* Text color */
+    margin-right: 200px;       /* Space between "All items" and search input */
+  }
+  
+  .input {
+    width: 300px;             /* Set the width for the search input */
+    height: 36px;             /* Set the height for the search input */
+    padding: 0 16px;          /* Padding inside the input */
+    border-radius: 18px;      /* Rounded corners for the input */
+    border: 1px solid #ccc;   /* Border color */
+    font-size: 14px;          /* Font size */
+  }
+  
+
+
+
+
+
+  
+  
+  
+  
+  
+  
