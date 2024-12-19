@@ -22,7 +22,7 @@
   
   .left-section {
     flex: 1;
-    background-image: url('http://localhost:3000//image/login.png'); /* Replace with actual path */
+    background-image: url('/public/image/login.png'); /* Replace with actual path */
     background-size: cover;
     background-position: center;
     position: relative;
