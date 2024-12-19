@@ -9,7 +9,7 @@ import Profile from './comp/profile';
 
 function App() {
   return (
-    <HashRouter>
+    <Router>
       <Routes>
         {/* Default route for root path */}
         <Route path="/" element={<Home />} />
@@ -23,7 +23,7 @@ function App() {
 
     
       </Routes>
-    </HashRouter>
+    </Router>
   );
 }
 
