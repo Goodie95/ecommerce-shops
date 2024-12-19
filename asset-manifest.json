@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/https//:Goodie95.github.io/ecommerce-shops/static/css/main.6a50fe28.css",
-    "main.js": "/https//:Goodie95.github.io/ecommerce-shops/static/js/main.268136aa.js",
+    "main.js": "/https//:Goodie95.github.io/ecommerce-shops/static/js/main.04cc7279.js",
     "static/js/488.8d8cf5b5.chunk.js": "/https//:Goodie95.github.io/ecommerce-shops/static/js/488.8d8cf5b5.chunk.js",
     "static/media/jiko.png": "/https//:Goodie95.github.io/ecommerce-shops/static/media/jiko.70771a42464eb8682cf7.png",
     "static/media/fa-solid-900.ttf": "/https//:Goodie95.github.io/ecommerce-shops/static/media/fa-solid-900.2582b0e4bcf85eceead0.ttf",
@@ -16,11 +16,11 @@
     "static/media/fa-v4compatibility.woff2": "/https//:Goodie95.github.io/ecommerce-shops/static/media/fa-v4compatibility.ea8f94e1d22e0d35ccd4.woff2",
     "index.html": "/https//:Goodie95.github.io/ecommerce-shops/index.html",
     "main.6a50fe28.css.map": "/https//:Goodie95.github.io/ecommerce-shops/static/css/main.6a50fe28.css.map",
-    "main.268136aa.js.map": "/https//:Goodie95.github.io/ecommerce-shops/static/js/main.268136aa.js.map",
+    "main.04cc7279.js.map": "/https//:Goodie95.github.io/ecommerce-shops/static/js/main.04cc7279.js.map",
     "488.8d8cf5b5.chunk.js.map": "/https//:Goodie95.github.io/ecommerce-shops/static/js/488.8d8cf5b5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6a50fe28.css",
-    "static/js/main.268136aa.js"
+    "static/js/main.04cc7279.js"
   ]
 }
