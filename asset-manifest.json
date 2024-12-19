@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/https//:Goodie95.github.io/ecommerce-shops/static/css/main.6a50fe28.css",
-    "main.js": "/https//:Goodie95.github.io/ecommerce-shops/static/js/main.04cc7279.js",
-    "static/js/488.8d8cf5b5.chunk.js": "/https//:Goodie95.github.io/ecommerce-shops/static/js/488.8d8cf5b5.chunk.js",
-    "static/media/jiko.png": "/https//:Goodie95.github.io/ecommerce-shops/static/media/jiko.70771a42464eb8682cf7.png",
-    "static/media/fa-solid-900.ttf": "/https//:Goodie95.github.io/ecommerce-shops/static/media/fa-solid-900.2582b0e4bcf85eceead0.ttf",
-    "static/media/mixed nuts.png": "/https//:Goodie95.github.io/ecommerce-shops/static/media/mixed nuts.b1f6ce49e901ff890566.png",
-    "static/media/nuts2.png": "/https//:Goodie95.github.io/ecommerce-shops/static/media/nuts2.7b540b0333797939becf.png",
-    "static/media/fa-brands-400.ttf": "/https//:Goodie95.github.io/ecommerce-shops/static/media/fa-brands-400.1815e00441357e01619e.ttf",
-    "static/media/fa-solid-900.woff2": "/https//:Goodie95.github.io/ecommerce-shops/static/media/fa-solid-900.2463b90d9a316e4e5294.woff2",
-    "static/media/fa-brands-400.woff2": "/https//:Goodie95.github.io/ecommerce-shops/static/media/fa-brands-400.c210719e60948b211a12.woff2",
-    "static/media/fa-regular-400.ttf": "/https//:Goodie95.github.io/ecommerce-shops/static/media/fa-regular-400.914997e1bdfc990d0897.ttf",
-    "static/media/fa-regular-400.woff2": "/https//:Goodie95.github.io/ecommerce-shops/static/media/fa-regular-400.89999bdf5d835c012025.woff2",
-    "static/media/fa-v4compatibility.ttf": "/https//:Goodie95.github.io/ecommerce-shops/static/media/fa-v4compatibility.da94ef451f4969af06e6.ttf",
-    "static/media/fa-v4compatibility.woff2": "/https//:Goodie95.github.io/ecommerce-shops/static/media/fa-v4compatibility.ea8f94e1d22e0d35ccd4.woff2",
-    "index.html": "/https//:Goodie95.github.io/ecommerce-shops/index.html",
-    "main.6a50fe28.css.map": "/https//:Goodie95.github.io/ecommerce-shops/static/css/main.6a50fe28.css.map",
-    "main.04cc7279.js.map": "/https//:Goodie95.github.io/ecommerce-shops/static/js/main.04cc7279.js.map",
-    "488.8d8cf5b5.chunk.js.map": "/https//:Goodie95.github.io/ecommerce-shops/static/js/488.8d8cf5b5.chunk.js.map"
+    "main.css": "/ecommerce-shops/static/css/main.661f0fdc.css",
+    "main.js": "/ecommerce-shops/static/js/main.8e2e97f0.js",
+    "static/js/488.8d8cf5b5.chunk.js": "/ecommerce-shops/static/js/488.8d8cf5b5.chunk.js",
+    "static/media/jiko.png": "/ecommerce-shops/static/media/jiko.70771a42464eb8682cf7.png",
+    "static/media/fa-solid-900.ttf": "/ecommerce-shops/static/media/fa-solid-900.2582b0e4bcf85eceead0.ttf",
+    "static/media/mixed nuts.png": "/ecommerce-shops/static/media/mixed nuts.b1f6ce49e901ff890566.png",
+    "static/media/nuts2.png": "/ecommerce-shops/static/media/nuts2.7b540b0333797939becf.png",
+    "static/media/fa-brands-400.ttf": "/ecommerce-shops/static/media/fa-brands-400.1815e00441357e01619e.ttf",
+    "static/media/fa-solid-900.woff2": "/ecommerce-shops/static/media/fa-solid-900.2463b90d9a316e4e5294.woff2",
+    "static/media/fa-brands-400.woff2": "/ecommerce-shops/static/media/fa-brands-400.c210719e60948b211a12.woff2",
+    "static/media/fa-regular-400.ttf": "/ecommerce-shops/static/media/fa-regular-400.914997e1bdfc990d0897.ttf",
+    "static/media/fa-regular-400.woff2": "/ecommerce-shops/static/media/fa-regular-400.89999bdf5d835c012025.woff2",
+    "static/media/fa-v4compatibility.ttf": "/ecommerce-shops/static/media/fa-v4compatibility.da94ef451f4969af06e6.ttf",
+    "static/media/fa-v4compatibility.woff2": "/ecommerce-shops/static/media/fa-v4compatibility.ea8f94e1d22e0d35ccd4.woff2",
+    "index.html": "/ecommerce-shops/index.html",
+    "main.661f0fdc.css.map": "/ecommerce-shops/static/css/main.661f0fdc.css.map",
+    "main.8e2e97f0.js.map": "/ecommerce-shops/static/js/main.8e2e97f0.js.map",
+    "488.8d8cf5b5.chunk.js.map": "/ecommerce-shops/static/js/488.8d8cf5b5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6a50fe28.css",
-    "static/js/main.04cc7279.js"
+    "static/css/main.661f0fdc.css",
+    "static/js/main.8e2e97f0.js"
   ]
 }
