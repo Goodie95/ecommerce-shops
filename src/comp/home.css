@@ -263,7 +263,7 @@ margin-left: 10px;
 .home .top_banner {
     width: 100%; /* Full width */
     height: 500px; /* Set the height of the banner */
-    background: url('http://localhost:3000//image/tomato.png'); /* Path to the image */
+    background: url('http://localhost:3000//image/tomato.jpg'); /* Path to the image */
     background-size: cover; /* Scale image to cover the entire container */
     background-repeat: no-repeat; /* Prevent repeating */
     background-position: center; /* Center the image */
