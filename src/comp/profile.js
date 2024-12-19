@@ -14,20 +14,8 @@ const Profile = () => {
           const toggleMenu = () => {
             setMenuOpen(!menuOpen);
           };
-    
-    const [name, setName] = useState('John Miller');
-    const [phoneNumber, setPhoneNumber] = useState('+255 763 123 456');
-    const [email, setEmail] = useState('john@gmail.com');
-    const [location, setLocation] = useState('Kijitonyama, Dar es Salaam');
-  
-    const handleEdit = () => {
       // Handle edit logic here
       console.log('Edit clicked');
-      
-    };
-
-
-
   return (
     <>
       <div className="header">

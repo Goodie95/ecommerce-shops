@@ -43,7 +43,7 @@ const SignIn = () => {
               <label>
                 <input type="checkbox" /> Remember Password
               </label>
-              <a href="#" className="forgot-password">Forget Password?</a>
+              <a href="/forgot-password" className="forgot-password">Forget Password?</a>
             </div>
             <button type="submit" className="login-button">Login</button>
           </form>

@@ -4,8 +4,6 @@ import { IoIosArrowDropright, IoIosArrowDropleft } from 'react-icons/io';
 import { RiShoppingBag4Line } from "react-icons/ri";
 import { RiShieldCheckLine } from "react-icons/ri";
 import { BiLeaf } from "react-icons/bi";
-import { MdLocalShipping } from 'react-icons/md';
-import { MdArrowDropDown } from 'react-icons/md';
 import { IoIosSearch } from 'react-icons/io';
 import { IoBagOutline } from "react-icons/io5";
 import { IoPersonOutline } from "react-icons/io5";
@@ -28,15 +26,15 @@ const Home = () => {
   };
 
   // State for New Arrivals
-  const [newArrivals, setNewArrivals] = useState(Homeproduct);
+  const [newArrivals] = useState(Homeproduct);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // State for Categories
-  const [categories, setCategories] = useState(Categoryproduct);
+  const [categories] = useState(Categoryproduct);
   const [categoryIndex, setCategoryIndex] = useState(0);
 
   // State for Featured Products
-  const [featuredProducts, setFeaturedProducts] = useState(Featuredproduct);
+  const [featuredProducts] = useState(Featuredproduct);
   const [featuredIndex, setFeaturedIndex] = useState(0);
 
   // Handle the next button for New Arrivals
@@ -67,18 +65,14 @@ const Home = () => {
     }
   };
 
-  // Handle the next button for Featured Products
-  const handleNextFeatured = () => {
+  // Handle the next button for Featured Products 
     if (featuredIndex < featuredProducts.length - 12) {
-      setFeaturedIndex(featuredIndex + 12);
-    }
+      setFeaturedIndex(featuredIndex + 12); 
   };
 
   // Handle the previous button for Featured Products
-  const handlePrevFeatured = () => {
     if (featuredIndex > 0) {
       setFeaturedIndex(featuredIndex - 12);
-    }
   };
 
   return (

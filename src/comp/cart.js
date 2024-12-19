@@ -5,7 +5,6 @@ import { IoBagOutline, IoPersonOutline } from 'react-icons/io5';
 import { RiShoppingBag4Line, RiShieldCheckLine } from 'react-icons/ri';
 import { BiLeaf } from 'react-icons/bi';
 import './home.css';
-import Featuredproduct from './featured_products';
 import jikoImage from "../images/jiko.png";
 import mixednutsImage from "../images/mixed nuts.png";
 import nuts2Image from "../images/nuts2.png";
