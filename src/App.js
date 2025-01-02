@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Nav from './comp/nav';
 import SignIn from './comp/sign-in';
 import SignUp from './comp/sign-up';
 import Home from './comp/home';
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Home />} />
         
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/nav" element={<Nav />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/home" element={<Home />} />
         <Route path="/products" element={<Products />} />

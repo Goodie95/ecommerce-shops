@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { Link } from 'react-router-dom';
 import './signin.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const SignIn = () => {
   const navigate = useNavigate(); // Create the navigate function

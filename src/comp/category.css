@@ -1,0 +1,21 @@
+/* styles.css */
+
+@media (max-width: 768px) {
+    .c-products {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: flex-start;  /* Align items to the start */
+    }
+  
+    .c-product {
+      width: 48%;  /* Each product takes up 48% of the container width */
+      margin-right: 2%; /* Adds space between products */
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .c-product {
+      width: 100%;  /* Each product takes up 100% of the container width on very small screens */
+    }
+  }
+  
