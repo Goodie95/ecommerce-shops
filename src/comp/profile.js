@@ -80,7 +80,7 @@ const Profile = () => {
                           <li><Link to="/about" className="text-dark text-decoration-none">About</Link></li>
                           <li><Link to="/services" className="text-dark text-decoration-none">Services</Link></li>
                           <li><Link to="/account" className="text-dark text-decoration-none">Account</Link></li>
-                          <li><Link to="/subscriptionPlans" className="text-dark text-decoration-none">Subscription Plans</Link></li>
+                          <li><Link to="/plans" className="text-dark text-decoration-none">Subscription Plans</Link></li>
                         </ul>
                       </div>
                     )}
