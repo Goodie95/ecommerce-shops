@@ -1,4 +1,4 @@
-https://ecommerce-shops--nu.vercel.app/ ( live demo link) 
+https://ecommerce-shops-now.vercel.app/ ( live demo link) 
 
 
 # React Project README
