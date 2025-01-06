@@ -104,15 +104,29 @@ const Plans = () => {
 
           {/* Search and Account Icons */}
           <div className="col-12 col-md-auto d-flex align-items-center justify-content-center gap-3 mt-3 mt-md-0">
-            <div className="search-menu d-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm p-2">
+            <div className="search-menu d-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm p-2"
+                    data-bs-toogle="tooltip"
+                    data-bs-placement="top"
+                    title="Search"
+                    >
               <IoIosSearch className="text-primary fs-4" />
             </div>
-            <div className="icon-menu d-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm p-2">
+            <div className="separator  mx-2 text-grey">|</div>
+            <div className="icon-menu d-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm p-2"
+                        data-bs-toogle="tooltip"
+                        data-bs-placement="top"
+                        title="My Cart"
+                        >
               <Link to="/cart" className="text-primary text-decoration-none">
                 <IoBagOutline className="fs-4" />
               </Link>
             </div>
-            <div className="account-menu d-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm p-2">
+            <div className="separator  mx-2 text-grey">|</div>
+            <div className="account-menu d-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm p-2"
+                          data-bs-toogle="tooltip"
+                          data-bs-placement="top"
+                          title="My Profile"
+                          >
               <Link to="/signin" className="text-primary text-decoration-none">
                 <IoPersonOutline className="fs-4" />
               </Link>
@@ -171,13 +185,123 @@ const Plans = () => {
               </p>
               <h3 className="fw-bold">Tsh 1000<span className="fs-6">/mo</span></h3>
               <hr />
+              <div className="d-flex align-items-center text-black">
+      {/* Icon */}
+      
+      {/* Text */}
+      <div>
+        <span className="fw-bold">What's included:</span>
+      </div>
+    </div>
               <ul className="list-unstyled">
-                <li className="text-success">&#10003; List up to 50 products</li>
-                <li className="text-success">&#10003; Advanced Statistics</li>
-                <li className="text-success">&#10003; Basic Support</li>
-                <li className="text-success">&#10003; Access to vendor dashboard</li>
-                <li className="text-muted">&#10007; Advanced analytics reporting</li>
-                <li className="text-muted">&#10007; Featured vendor placement</li>
+              <div className="d-flex align-items-center text-black">
+      {/* Icon */}
+      <div className="me-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="green"
+          viewBox="0 0 16 16"
+        >
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.5 11.5L13 5 11.5 3.5 6.5 8.5 4.5 6.5 3 8l3.5 3.5z" />
+        </svg>
+      </div>
+      {/* Text */}
+      <div>
+        <span className="fw-bold">List up to 200 products</span>
+      </div>
+    </div>
+    <div className="d-flex align-items-center text-black">
+      {/* Icon */}
+      <div className="me-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="green"
+          viewBox="0 0 16 16"
+        >
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.5 11.5L13 5 11.5 3.5 6.5 8.5 4.5 6.5 3 8l3.5 3.5z" />
+        </svg>
+      </div>
+      {/* Text */}
+      <div>
+        <span className="fw-bold">Advanced Statistics</span>
+      </div>
+    </div>
+    <div className="d-flex align-items-center text-black">
+      {/* Icon */}
+      <div className="me-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="green"
+          viewBox="0 0 16 16"
+        >
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.5 11.5L13 5 11.5 3.5 6.5 8.5 4.5 6.5 3 8l3.5 3.5z" />
+        </svg>
+      </div>
+      {/* Text */}
+      <div>
+        <span className="fw-bold">Basic Support</span>
+      </div>
+    </div>
+    <div className="d-flex align-items-center text-black">
+      {/* Icon */}
+      <div className="me-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="green"
+          viewBox="0 0 16 16"
+        >
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.5 11.5L13 5 11.5 3.5 6.5 8.5 4.5 6.5 3 8l3.5 3.5z" />
+        </svg>
+      </div>
+      {/* Text */}
+      <div>
+        <span className="fw-bold">Access to vendor dashboard</span>
+      </div>
+    </div>
+    <div className="d-flex align-items-center text-black">
+      {/* Icon */}
+      <div className="me-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="grey"
+          viewBox="0 0 16 16"
+        >
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.5 11.5L13 5 11.5 3.5 6.5 8.5 4.5 6.5 3 8l3.5 3.5z" />
+        </svg>
+      </div>
+      {/* Text */}
+      <div>
+        <span className="fw-bold">Advanced analytics reporting</span>
+      </div>
+    </div>
+    <div className="d-flex align-items-center text-black">
+      {/* Icon */}
+      <div className="me-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="grey"
+          viewBox="0 0 16 16"
+        >
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.5 11.5L13 5 11.5 3.5 6.5 8.5 4.5 6.5 3 8l3.5 3.5z" />
+        </svg>
+      </div>
+      {/* Text */}
+      <div>
+        <span className="fw-bold">Featured vendor placement</span>
+      </div>
+    </div>
               </ul>
               <button className="btn btn-outline-primary mt-3">Choose Plan</button>
             </div>
@@ -193,15 +317,143 @@ const Plans = () => {
               <p className="card-text text-muted">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
               </p>
-              <h3 className="fw-bold text-primary">Tsh 6000<span className="fs-6">/mo</span></h3>
+              <h3 className="fw-bold text-primary text-black">Tsh 6000<span className="fs-6">/mo</span></h3>
               <hr />
+              <div className="d-flex align-items-center text-black">
+      {/* Icon */}
+      
+      {/* Text */}
+      <div>
+        <span className="fw-bold">What's icluded:</span>
+      </div>
+    </div>
               <ul className="list-unstyled">
-                <li className="text-success">&#10003; List up to 200 products</li>
-                <li className="text-success">&#10003; Advanced Statistics</li>
-                <li className="text-success">&#10003; Priority Support</li>
-                <li className="text-success">&#10003; Access to vendor dashboard</li>
-                <li className="text-success">&#10003; Lorem ipsum dolor sit amet</li>
-                <li className="text-success">&#10003; Lorem ipsum dolor sit amet</li>
+              <div className="d-flex align-items-center text-black">
+      {/* Icon */}
+      <div className="me-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="green"
+          viewBox="0 0 16 16"
+        >
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.5 11.5L13 5 11.5 3.5 6.5 8.5 4.5 6.5 3 8l3.5 3.5z" />
+        </svg>
+      </div>
+      {/* Text */}
+      <div>
+        <span className="fw-bold">List up to 200 products</span>
+      </div>
+    </div>
+    <div className="d-flex align-items-center text-black">
+      {/* Icon */}
+      <div className="me-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="green"
+          viewBox="0 0 16 16"
+        >
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.5 11.5L13 5 11.5 3.5 6.5 8.5 4.5 6.5 3 8l3.5 3.5z" />
+        </svg>
+      </div>
+      {/* Text */}
+      <div>
+        <span className="fw-bold">Advanced Statistics</span>
+      </div>
+    </div>
+    <div className="d-flex align-items-center text-black">
+      {/* Icon */}
+      <div className="me-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="green"
+          viewBox="0 0 16 16"
+        >
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.5 11.5L13 5 11.5 3.5 6.5 8.5 4.5 6.5 3 8l3.5 3.5z" />
+        </svg>
+      </div>
+      {/* Text */}
+      <div>
+        <span className="fw-bold">Priority Support</span>
+      </div>
+    </div>
+    <div className="d-flex align-items-center text-black">
+      {/* Icon */}
+      <div className="me-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="green"
+          viewBox="0 0 16 16"
+        >
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.5 11.5L13 5 11.5 3.5 6.5 8.5 4.5 6.5 3 8l3.5 3.5z" />
+        </svg>
+      </div>
+      {/* Text */}
+      <div>
+        <span className="fw-bold">Access to vendor dashboard</span>
+      </div>
+    </div>
+    <div className="d-flex align-items-center text-black">
+      {/* Icon */}
+      <div className="me-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="grey"
+          viewBox="0 0 16 16"
+        >
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.5 11.5L13 5 11.5 3.5 6.5 8.5 4.5 6.5 3 8l3.5 3.5z" />
+        </svg>
+      </div>
+      {/* Text */}
+      <div>
+        <span className="fw-bold">Lorem ipsum dolor sit amet</span>
+      </div>
+    </div>
+    <div className="d-flex align-items-center text-black">
+      {/* Icon */}
+      <div className="me-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="grey"
+          viewBox="0 0 16 16"
+        >
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.5 11.5L13 5 11.5 3.5 6.5 8.5 4.5 6.5 3 8l3.5 3.5z" />
+        </svg>
+      </div>
+      {/* Text */}
+      <div>
+        <span className="fw-bold">Lorem ipsum dolor sit amet</span>
+      </div>
+    </div>
+    <div className="d-flex align-items-center text-black">
+      {/* Icon */}
+      <div className="me-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="grey"
+          viewBox="0 0 16 16"
+        >
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.5 11.5L13 5 11.5 3.5 6.5 8.5 4.5 6.5 3 8l3.5 3.5z" />
+        </svg>
+      </div>
+      {/* Text */}
+      <div>
+        <span className="fw-bold">Lorem ipsum dolor sit amet</span>
+      </div>
+    </div>
               </ul>
               <button className="btn btn-outline-primary mt-3">Choose Plan</button>
             </div>
@@ -216,15 +468,125 @@ const Plans = () => {
               <p className="card-text text-muted">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
               </p>
-              <h3 className="fw-bold">Tsh 2100<span className="fs-6">/mo</span></h3>
+              <h3 className="fw-bold ">Tsh 21000<span className="fs-6">/mo</span></h3>
               <hr />
+              <div className="d-flex align-items-center text-black">
+      {/* Icon */}
+      
+      {/* Text */}
+      <div>
+        <span className="fw-bold">What's include:</span>
+      </div>
+    </div>
               <ul className="list-unstyled">
-                <li className="text-success">&#10003; Unlimited product listings</li>
-                <li className="text-success">&#10003; Dedicated account manager</li>
-                <li className="text-success">&#10003; Access to vendor dashboard</li>
-                <li className="text-success">&#10003; Advanced analytics</li>
-                <li className="text-success">&#10003; Featured vendor placement</li>
-                <li className="text-success">&#10003; Directory Listing</li>
+              <div className="d-flex align-items-center text-black">
+      {/* Icon */}
+      <div className="me-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="green"
+          viewBox="0 0 16 16"
+        >
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.5 11.5L13 5 11.5 3.5 6.5 8.5 4.5 6.5 3 8l3.5 3.5z" />
+        </svg>
+      </div>
+      {/* Text */}
+      <div>
+        <span className="fw-bold">Unlimited product listing</span>
+      </div>
+    </div>
+    <div className="d-flex align-items-center text-black">
+      {/* Icon */}
+      <div className="me-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="green"
+          viewBox="0 0 16 16"
+        >
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.5 11.5L13 5 11.5 3.5 6.5 8.5 4.5 6.5 3 8l3.5 3.5z" />
+        </svg>
+      </div>
+      {/* Text */}
+      <div>
+        <span className="fw-bold">Dedicated Account manager</span>
+      </div>
+    </div>
+    <div className="d-flex align-items-center text-black">
+      {/* Icon */}
+      <div className="me-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="green"
+          viewBox="0 0 16 16"
+        >
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.5 11.5L13 5 11.5 3.5 6.5 8.5 4.5 6.5 3 8l3.5 3.5z" />
+        </svg>
+      </div>
+      {/* Text */}
+      <div>
+        <span className="fw-bold">Access to vendor dashboard</span>
+      </div>
+    </div>
+    <div className="d-flex align-items-center text-black">
+      {/* Icon */}
+      <div className="me-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="green"
+          viewBox="0 0 16 16"
+        >
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.5 11.5L13 5 11.5 3.5 6.5 8.5 4.5 6.5 3 8l3.5 3.5z" />
+        </svg>
+      </div>
+      {/* Text */}
+      <div>
+        <span className="fw-bold">Advanced analytics</span>
+      </div>
+    </div>
+    <div className="d-flex align-items-center text-black">
+      {/* Icon */}
+      <div className="me-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="green"
+          viewBox="0 0 16 16"
+        >
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.5 11.5L13 5 11.5 3.5 6.5 8.5 4.5 6.5 3 8l3.5 3.5z" />
+        </svg>
+      </div>
+      {/* Text */}
+      <div>
+        <span className="fw-bold">Featured vendor placement</span>
+      </div>
+    </div>
+    <div className="d-flex align-items-center text-black">
+      {/* Icon */}
+      <div className="me-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="green"
+          viewBox="0 0 16 16"
+        >
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.5 11.5L13 5 11.5 3.5 6.5 8.5 4.5 6.5 3 8l3.5 3.5z" />
+        </svg>
+      </div>
+      {/* Text */}
+      <div>
+        <span className="fw-bold">Directory listing</span>
+      </div>
+    </div>
               </ul>
               <button className="btn btn-outline-primary mt-3">Choose Plan</button>
             </div>

@@ -101,20 +101,34 @@ const Profile = () => {
       
                 {/* Search and Account Icons */}
                 <div className="col-12 col-md-auto d-flex align-items-center justify-content-center gap-3 mt-3 mt-md-0">
-                  <div className="search-menu d-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm p-2">
-                    <IoIosSearch className="text-primary fs-4" />
-                  </div>
-                  <div className="icon-menu d-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm p-2">
-                    <Link to="/cart" className="text-primary text-decoration-none">
-                      <IoBagOutline className="fs-4" />
-                    </Link>
-                  </div>
-                  <div className="account-menu d-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm p-2">
-                    <Link to="/signin" className="text-primary text-decoration-none">
-                      <IoPersonOutline className="fs-4" />
-                    </Link>
-                  </div>
-                </div>
+                            <div className="search-menu d-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm p-2"
+                                    data-bs-toogle="tooltip"
+                                    data-bs-placement="top"
+                                    title="Search"
+                                    >
+                              <IoIosSearch className="text-primary fs-4" />
+                            </div>
+                            <div className="separator  mx-2 text-grey">|</div>
+                            <div className="icon-menu d-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm p-2"
+                                        data-bs-toogle="tooltip"
+                                        data-bs-placement="top"
+                                        title="My Cart"
+                                        >
+                              <Link to="/cart" className="text-primary text-decoration-none">
+                                <IoBagOutline className="fs-4" />
+                              </Link>
+                            </div>
+                            <div className="separator  mx-2 text-grey">|</div>
+                            <div className="account-menu d-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm p-2"
+                                          data-bs-toogle="tooltip"
+                                          data-bs-placement="top"
+                                          title="My Profile"
+                                          >
+                              <Link to="/signin" className="text-primary text-decoration-none">
+                                <IoPersonOutline className="fs-4" />
+                              </Link>
+                            </div>
+                          </div>
               </div>
             </div>
 
