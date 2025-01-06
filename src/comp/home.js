@@ -149,7 +149,9 @@ const Home = () => {
 
           {/* Search Input */}
           <div className="col-12 col-lg d-flex align-items-center bg-light rounded-pill px-3 py-2 flex-grow-1">
-            <span className="text-secondary fw-bold me-3">All items</span>
+          <div className="d-flex align-items-center">
+      <span className="text-secondary fw-bold me-3 text-nowrap">All items</span>
+    </div>
             <IoIosArrowDown className="text-secondary fs-5 me-3" />
             <div className="separator text-muted mx-2">|</div>
             <input
@@ -210,8 +212,8 @@ const Home = () => {
       Spice Nyanya
     </h2>
     <p className="mb-4">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. <br /> Beatae dicta in placeat hic labore.
-    </p>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit.Beatae dicta in placeat hic labore.
+</p>
     <Link to="/products" className="btn btn-warning fw-bold px-4 py-2">
       Shop Now
     </Link>
