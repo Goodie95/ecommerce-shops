@@ -1,0 +1,3 @@
+.carousel-indicators button:hover {
+    background-color: blue !important; /* Hover indicator will have blue background */
+  }

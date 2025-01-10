@@ -263,11 +263,11 @@ font-size: 14px;          /* Font size */
 .home .top_banner {
   width: 100%; /* Full width */
   height: 500px; /* Set the height of the banner */
-  background: url('/public/image/cover1.png'); /* Path to the image */
+
   background-size: cover; /* Scale image to cover the entire container */
   background-repeat: no-repeat; /* Prevent repeating */
   background-position: center; /* Center the image */
-  padding: 50px 60px;
+  
 }
 
 .home .top_banner .contact {

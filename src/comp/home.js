@@ -14,6 +14,7 @@ import Featuredproduct from './featured_products';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import './category.css';
+import './causel.css';
    
 
 
@@ -197,30 +198,173 @@ const Home = () => {
   <div className="home">
   {/* Top Banner */}
   <div
-    className="top_banner d-flex align-items-center justify-content-center text-center text-white"
-    style={{
-      background: "linear-gradient(0deg, #D9D9D9 0%, #040E1F 100%), url('image/cover1.png')) center/cover no-repeat",
-      height: "500px",
-    }}
-  >
-    
-  <div className="contact w-100 d-flex flex-column justify-content-center align-items-start" style={{ position: "relative", paddingLeft: "20px", paddingTop: "20px" }}>
-    <h3 className="text-uppercase text-warning fw-light mb-2" style={{paddingTop: "10px",marginBottom: "250px" }}>
-      Up to 30% off today
-    </h3>
-    <h2 className="text-uppercase fw-bold fs-1" style={{paddingTop: "20px", }}>
-      Spice Nyanya
-    </h2>
-    <p className="mb-4">
-  Lorem ipsum dolor sit amet consectetur adipisicing elit.Beatae dicta in placeat hic labore.
-</p>
-    <Link to="/products" className="btn btn-warning fw-bold px-4 py-2">
-      Shop Now
-    </Link>
-  
+  id="carouselExampleAutoplay"
+  className="carousel slide top_banner d-flex align-items-center justify-content-center text-center text-white"
+  data-bs-ride="carousel"
+  data-bs-interval="1500"
+  style={{ height: "500px" }}
+>
+  {/* Indicators */}
+  <div className="carousel-indicators">
+    <button
+      type="button"
+      data-bs-target="#carouselExampleAutoplay"
+      data-bs-slide-to="0"
+      className="active"
+      aria-current="true"
+      aria-label="Slide 1"
+      style={{color: "b"}}
+    ></button>
+    <button
+      type="button"
+      data-bs-target="#carouselExampleAutoplay"
+      data-bs-slide-to="1"
+      aria-label="Slide 2"
+    ></button>
+    <button
+      type="button"
+      data-bs-target="#carouselExampleAutoplay"
+      data-bs-slide-to="2"
+      aria-label="Slide 3"
+    ></button>
+  </div>
 
+  {/* Slides */}
+  <div className="carousel-inner">
+    <div
+      className="carousel-item active"
+      style={{
+        backgroundImage: "url('image/cover1.png')",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        height: "500px",
+      }}
+    >
+      {/* Contact Section Inside the Active Carousel Item */}
+      <div
+        className="contact w-100 d-flex flex-column justify-content-center align-items-start text-start"
+        style={{
+          position: "absolute",
+          paddingLeft: "20px",
+          paddingTop: "30px",
+          color: "#fff",
+        }}
+      >
+        <h3
+          className="text-uppercase text-warning fw-light mb-2"
+          style={{ paddingTop: "10px", marginBottom: "250px" }}
+        >
+          Up to 30% off today
+        </h3>
+        <h2
+          className="text-uppercase fw-bold fs-1"
+          style={{ paddingTop: "20px" }}
+        >
+          Spice Nyanya
+        </h2>
+        <p className="mb-4">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae dicta
+          in placeat hic labore.
+        </p>
+        <Link to="/products" className="btn btn-warning fw-bold px-4 py-2">
+          Shop Now
+        </Link>
+      </div>
+    </div>
+    <div
+      className="carousel-item"
+      style={{
+        backgroundImage: "url('image/home decor.png')",
+        backgroundPosition: "center",
+        backgroundSize: "100% auto", 
+        backgroundRepeat: "no-repeat",
+        height: "500px",
+        
+      }}
+      
+    >
+      <div
+        className="contact w-100 d-flex flex-column justify-content-center align-items-start text-start"
+        style={{
+          position: "absolute",
+          paddingLeft: "20px",
+          paddingTop: "30px",
+          color: "#fff",
+        }}
+      >
+        <h3
+          className="text-uppercase text-warning fw-light mb-2"
+          style={{ paddingTop: "10px", marginBottom: "250px" }}
+        >
+          Up to 30% off today
+        </h3>
+        <h2
+          className="text-uppercase fw-bold fs-1"
+          style={{ paddingTop: "20px" }}
+        >
+          Home Decor
+        </h2>
+        <p className="mb-4">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae dicta
+          in placeat hic labore.
+        </p>
+        <Link to="/products" className="btn btn-warning fw-bold px-4 py-2">
+          Shop Now
+        </Link>
+      </div>
+    </div>
+    <div
+      className="carousel-item"
+      style={{
+        backgroundImage: "url('image/cosmetics.png')",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        height: "500px",
+      }}
+    >
+      <div
+        className="contact w-100 d-flex flex-column justify-content-center align-items-start text-start"
+        style={{
+          position: "absolute",
+          paddingLeft: "20px",
+          paddingTop: "30px",
+          color: "#fff",
+        }}
+      >
+        <h3
+          className="text-uppercase text-warning fw-light mb-2"
+          style={{ paddingTop: "10px", marginBottom: "250px" }}
+        >
+          Up to 30% off today
+        </h3>
+        <h2
+          className="text-uppercase fw-bold fs-1"
+          style={{ paddingTop: "20px" }}
+        >
+          Cosmetics
+        </h2>
+        <p className="mb-4">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae dicta
+          in placeat hic labore.
+        </p>
+        <Link to="/products" className="btn btn-warning fw-bold px-4 py-2">
+          Shop Now
+        </Link>
+      </div>
     </div>
   </div>
+
+  {/* Controls */}
+  
+</div>
+
+</div>
+
+
+    
+  
 
   
 {/* New Arrivals Section */}
@@ -467,10 +611,8 @@ const Home = () => {
         
       </div>
       
-      </div>
-      
-      </div>
-      
+      </div>     
+    
     </>
   );
 };
