@@ -260,7 +260,7 @@ const Home = () => {
           />
           <h3>{product.Name}</h3>
           <p>Tsh {product.price}</p>
-          <button className="add-to-cart btn btn-primary w-100">Add to Cart</button>
+          <button className="add-to-cart btn btn-primary w-50">Add to Cart</button>
         </div>
       ))}
     </div>

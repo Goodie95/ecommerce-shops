@@ -160,10 +160,9 @@ const Profile = () => {
               Edit Account <span className="arrow"></span>
             </button>
 
-            <div className="profile-section">
-              <h3>Orders</h3>
-              {/* Add your orders component here */}
-            </div>
+            <button className="btn btn-primary w-100 mb-3">
+              orders <span className="arrow"></span>
+            </button>
           </div>
         </div>
 

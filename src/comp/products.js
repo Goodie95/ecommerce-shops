@@ -7,6 +7,7 @@ import { BiLeaf } from 'react-icons/bi';
 import Featuredproduct from './featured_products';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 const Sidebar = ({ onFilter, activeCategory, setActiveCategory }) => {
   const [priceRange, setPriceRange] = useState({ min: '', max: '' });
 
@@ -133,7 +134,7 @@ const Products = () => {
                     <li><Link to="/about" className="text-dark text-decoration-none">About</Link></li>
                     <li><Link to="/services" className="text-dark text-decoration-none">Services</Link></li>
                     <li><Link to="/account" className="text-dark text-decoration-none">Account</Link></li>
-                    <li><Link to="/subscriptionPlans" className="text-dark text-decoration-none">Subscription Plans</Link></li>
+                    <li><Link to="/plans" className="text-dark text-decoration-none">Subscription Plans</Link></li>
                   </ul>
                 </div>
               )}
@@ -203,8 +204,8 @@ const Products = () => {
             )}
           </div>
 
-          <div className="p-featured-products" style={{marginBottom: '50px'}}>
-            <div className="p-featured-products-grid">
+          <div className="p-featured-products" style={{marginBottom: '20px'}}>
+          <div className="p-featured-products-grid bg-transparent">
               {Featuredproduct.map((product) => (
                 <div key={product.id} className="p-featured-product">
                   <img
