@@ -189,12 +189,12 @@ const Products = () => {
         </div>
       </div>
 
-      <div className="main-container">
+       <div className="main-container"> 
         <Sidebar onFilter={handleFilter} activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
 
         <div className="products-container">
           <div className="products-header">
-            <h2>Products</h2>
+            <h1>Products</h1>
             <button className="sort-button">Sort By <IoIosArrowDown className="arrow-icon" /></button>
           </div>
 
@@ -204,26 +204,247 @@ const Products = () => {
             )}
           </div>
 
-          <div className="p-featured-products" style={{marginBottom: '20px'}}>
-          <div className="p-featured-products-grid bg-transparent">
-              {Featuredproduct.map((product) => (
-                <div key={product.id} className="p-featured-product">
-                  <img
-                    src={process.env.PUBLIC_URL + '/' + product.image}
-                    alt={product.Name}
-                    className="p-featured-product-image"
-                  />
-                  <h3>{product.Name}</h3>
-                  <p>Tsh {product.price}</p>
-                  <button className="add-to-cart">Add to Cart</button>
-                </div>
-              ))}
-            </div>
+
+            
+    
+  <div className="row gx-4">
+    {/* Card 1 */}
+    <div className="col-6 col-md-4 mb-4">
+      <div className="card" style={{ width: "18rem", borderRadius: "10px", overflow: "hidden" }}>
+        <img
+          src="image/nuts.png" // Replace with the correct image path
+          className="card-img-top"
+          alt="Product"
+          style={{ height: "15rem", objectFit: "cover" }}
+        />
+        <div className="card-body text-left">
+          <h5 className="card-title fw-bold">Cash Karanga</h5>
+          <div className="d-flex justify-content-between align-items-center">
+            <p className="card-text text-muted mb-0">Tsh 14,000</p>
+            <button className="btn btn-primary btn-sm fw-bold">Add To Cart</button>
           </div>
         </div>
       </div>
+    </div>
 
-      <div className='description'>
+    {/* Card 2 */}
+    <div className="col-6 col-md-4 mb-4">
+      <div className="card" style={{ width: "18rem", borderRadius: "10px", overflow: "hidden" }}>
+        <img
+          src="image/asali.png" // Replace with the correct image path
+          className="card-img-top"
+          alt="Product"
+          style={{ height: "15rem", objectFit: "cover" }}
+        />
+        <div className="card-body text-left">
+          <h5 className="card-title fw-bold">Asali asili</h5>
+          <div className="d-flex justify-content-between align-items-center">
+            <p className="card-text text-muted mb-0">Tsh 14,000</p>
+            <button className="btn btn-primary btn-sm fw-bold">Add To Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Card 3 */}
+    <div className="col-6 col-md-4 mb-4">
+      <div className="card" style={{ width: "18rem", borderRadius: "10px", overflow: "hidden" }}>
+        <img
+          src="image/candle.png" // Replace with the correct image path
+          className="card-img-top"
+          alt="Product"
+          style={{ height: "15rem", objectFit: "cover" }}
+        />
+        <div className="card-body text-left">
+          <h5 className="card-title fw-bold">Candle</h5>
+          <div className="d-flex justify-content-between align-items-center">
+            <p className="card-text text-muted mb-0">Tsh 14,000</p>
+            <button className="btn btn-primary btn-sm fw-bold">Add To Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div className="col-6 col-md-4 mb-4">
+      <div className="card" style={{ width: "18rem", borderRadius: "10px", overflow: "hidden" }}>
+        <img
+          src="image/coconut.png" // Replace with the correct image path
+          className="card-img-top"
+          alt="Product"
+          style={{ height: "15rem", objectFit: "cover" }}
+        />
+        <div className="card-body text-left">
+          <h5 className="card-title fw-bold">Coconut oil</h5>
+          <div className="d-flex justify-content-between align-items-center">
+            <p className="card-text text-muted mb-0">Tsh 14,000</p>
+            <button className="btn btn-primary btn-sm fw-bold">Add To Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div className="col-6 col-md-4 mb-4">
+      <div className="card" style={{ width: "18rem", borderRadius: "10px", overflow: "hidden" }}>
+        <img
+          src="image/honey.png" // Replace with the correct image path
+          className="card-img-top"
+          alt="Product"
+          style={{ height: "15rem", objectFit: "cover" }}
+        />
+        <div className="card-body text-left">
+          <h5 className="card-title fw-bold">Honey</h5>
+          <div className="d-flex justify-content-between align-items-center">
+            <p className="card-text text-muted mb-0">Tsh 14,000</p>
+            <button className="btn btn-primary btn-sm fw-bold">Add To Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div className="col-6 col-md-4 mb-4">
+      <div className="card" style={{ width: "18rem", borderRadius: "10px", overflow: "hidden" }}>
+        <img
+          src="image/kibegi.png" // Replace with the correct image path
+          className="card-img-top"
+          alt="Product"
+          style={{ height: "15rem", objectFit: "cover" }}
+        />
+        <div className="card-body text-left">
+          <h5 className="card-title fw-bold">Bee Honey</h5>
+          <div className="d-flex justify-content-between align-items-center">
+            <p className="card-text text-muted mb-0">Tsh 14,000</p>
+            <button className="btn btn-primary btn-sm fw-bold">Add To Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div className="col-6 col-md-4 mb-4">
+      <div className="card" style={{ width: "18rem", borderRadius: "10px", overflow: "hidden" }}>
+        <img
+          src="image/mixed nuts.png" // Replace with the correct image path
+          className="card-img-top"
+          alt="Product"
+          style={{ height: "15rem", objectFit: "cover" }}
+        />
+        <div className="card-body text-left">
+          <h5 className="card-title fw-bold">Mixed Nuts</h5>
+          <div className="d-flex justify-content-between align-items-center">
+            <p className="card-text text-muted mb-0">Tsh 14,000</p>
+            <button className="btn btn-primary btn-sm fw-bold">Add To Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div className="col-6 col-md-4 mb-4">
+      <div className="card" style={{ width: "18rem", borderRadius: "10px", overflow: "hidden" }}>
+        <img
+          src="image/chili.png" // Replace with the correct image path
+          className="card-img-top"
+          alt="Product"
+          style={{ height: "15rem", objectFit: "cover" }}
+        />
+        <div className="card-body text-left">
+          <h5 className="card-title fw-bold">Chili Sauce</h5>
+          <div className="d-flex justify-content-between align-items-center">
+            <p className="card-text text-muted mb-0">Tsh 14,000</p>
+            <button className="btn btn-primary btn-sm fw-bold">Add To Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div className="col-6 col-md-4 mb-4">
+      <div className="card" style={{ width: "18rem", borderRadius: "10px", overflow: "hidden" }}>
+        <img
+          src="image/oliveoil.png" // Replace with the correct image path
+          className="card-img-top"
+          alt="Product"
+          style={{ height: "15rem", objectFit: "cover" }}
+        />
+        <div className="card-body text-left">
+          <h5 className="card-title fw-bold">Olive oil</h5>
+          <div className="d-flex justify-content-between align-items-center">
+            <p className="card-text text-muted mb-0">Tsh 14,000</p>
+            <button className="btn btn-primary btn-sm fw-bold">Add To Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div className="col-6 col-md-4 mb-4">
+      <div className="card" style={{ width: "18rem", borderRadius: "10px", overflow: "hidden" }}>
+        <img
+          src="image/ateke kahawa.png" // Replace with the correct image path
+          className="card-img-top"
+          alt="Product"
+          style={{ height: "15rem", objectFit: "cover" }}
+        />
+        <div className="card-body text-left">
+          <h5 className="card-title fw-bold">Ateke Kahawa</h5>
+          <div className="d-flex justify-content-between align-items-center">
+            <p className="card-text text-muted mb-0">Tsh 14,000</p>
+            <button className="btn btn-primary btn-sm fw-bold">Add To Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div className="col-6 col-md-4 mb-4">
+      <div className="card" style={{ width: "18rem", borderRadius: "10px", overflow: "hidden" }}>
+        <img
+          src="image/asa.png" // Replace with the correct image path
+          className="card-img-top"
+          alt="Product"
+          style={{ height: "15rem", objectFit: "cover" }}
+        />
+        <div className="card-body text-left">
+          <h5 className="card-title fw-bold">Asa</h5>
+          <div className="d-flex justify-content-between align-items-center">
+            <p className="card-text text-muted mb-0">Tsh 14,000</p>
+            <button className="btn btn-primary btn-sm fw-bold">Add To Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div className="col-6 col-md-4 mb-4">
+      <div className="card" style={{ width: "18rem", borderRadius: "10px", overflow: "hidden" }}>
+        <img
+          src="image/jiko.png" // Replace with the correct image path
+          className="card-img-top"
+          alt="Product"
+          style={{ height: "15rem", objectFit: "cover" }}
+        />
+        <div className="card-body text-left">
+          <h5 className="card-title fw-bold">Spice jiko</h5>
+          <div className="d-flex justify-content-between align-items-center">
+            <p className="card-text text-muted mb-0">Tsh 14,000</p>
+            <button className="btn btn-primary btn-sm fw-bold">Add To Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    
+
+                
+  </div>
+</div>
+
+
+
+
+       </div>
+       
+       
+
+       
+       
+
+       <div className='description' >
                 <div className="free-delivery-container" style={{marginBottom: '20px', marginTop: '20px'}}>
                 <RiShoppingBag4Line size={50} className="delivery-icon" />
                 <p className="free-delivery-text">Free Delivery</p>
@@ -248,7 +469,8 @@ const Products = () => {
                 <p className="quality-text-1">Lorem ipsum dolor sit amet <br />consectetur adipisicing elit amesevuda.</p>
                   </div>
                 </div>
-                <footer className="footer">
+
+                <footer className="footer" style={{margin: 'auto'}}>
             <div className="footer-content">
               {/* Left Section */}
               <div className="footer-left">
@@ -310,6 +532,16 @@ const Products = () => {
               <p>© Eshops 2024 Copyright</p>
             </div>
           </footer>
+
+
+            
+
+            
+      
+
+
+                
+                
       
     </>
   );

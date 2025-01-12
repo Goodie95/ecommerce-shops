@@ -119,7 +119,7 @@ const Home = () => {
           </div>
 
           {/* Menu */}
-          <div className="col-12 col-md-auto d-flex justify-content-center mb-3 mb-md-0">
+          <div className="col-12 col-md-auto d-flex justify-content-center mb-3 mb-md-0" style={{  zIndex: 1}}>
       <div className="menu-container d-flex align-items-center px-3 py-2 bg-light rounded gap-2">
         <button
           ref={buttonRef} // Button ref to detect clicks
@@ -201,7 +201,7 @@ const Home = () => {
   id="carouselExampleAutoplay"
   className="carousel slide top_banner d-flex align-items-center justify-content-center text-center text-white"
   data-bs-ride="carousel"
-  data-bs-interval="1500"
+  data-bs-interval="1200"
   style={{ height: "500px" }}
 >
   {/* Indicators */}
@@ -476,7 +476,7 @@ const Home = () => {
   <div className="col">
     <h2>Featured Products</h2>
   </div>
-  <div className="col text-end">
+  <div className="col text-end" style={{marginRight: '20px'}}>
     <Link to="/featured-products" className="btn btn-outline-danger">
       SELL ALL
     </Link>
@@ -536,7 +536,8 @@ const Home = () => {
             <p className="quality-text-1">Lorem ipsum dolor sit amet<br />consectetur adipisicing elit.</p>
           </div>
         </div>
-          <footer className="footer">
+
+          <footer className="footer" style={{margin: 'auto'}}>
       <div className="footer-content">
         {/* Left Section */}
         <div className="footer-left">
