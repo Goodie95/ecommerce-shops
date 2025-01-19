@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useCart } from './CartContext';
 import { Link } from 'react-router-dom';
 import { IoIosArrowDropright, IoIosArrowDropleft } from 'react-icons/io';
 import { RiShoppingBag4Line } from "react-icons/ri";
@@ -15,21 +16,37 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import './category.css';
 import './causel.css';
-   
+import { useNavigate } from "react-router-dom";
 
 
 const Home = () => {
+
+  {/*const { addToCart } = useCart(); // Get the addToCart function from context
+
+  const Products = [
+    { id: 1, name: "Cash Karanga", price: 14000, image: "image/nuts.png" },
+    // Add more products as needed
+  ];
+
+  const handleAddToCart = (Product) => {
+    addToCart(Product); // Add product to the cart
+    alert('Product added to cart');
+  }; */}
+  
 
   // State for menu visibility
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null); // Ref for the menu content
   const buttonRef = useRef(null); // Ref for the button
+  
 
 
   // Toggle menu visibility
   const toggleMenu = () => {
     setMenuOpen((prevMenuOpen) => !prevMenuOpen);
   };
+
+  
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -101,6 +118,127 @@ const Home = () => {
       setFeaturedIndex(featuredIndex - 12);
   };
 
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const navigate = useNavigate();
+
+  const products = [
+    { name: "Cash Karanga", link: "/karanga" },
+    { name: "Asali asili", link: "/asali" },
+    { name: "Candle", link: "/candle" },
+    { name: "Coconut oil", link: "/coconut" },
+    { name: "Bee Honey", link: "/honey" },
+    { name: "Food and Beverages", link: "/food" },
+    { name: "Home Decor", link: "/decor" },
+    { name: "Cosmetics", link: "/cosmetics" },
+    { name: "Spices", link: "/spices" },
+    { name: "Nuts", link: "/nuts" },
+    { name: "Cleaning Products", link: "/cleaning" },
+    { name: "Spice Jiko", link: "/jiko" },
+    { name: "Ateke Kahawa", link: "/kahawa" },
+    { name: "Swahili Chilli", link: "/chili" },
+    { name: "Olive Oil", link: "/olive" },
+  ];
+
+  const handleInputChange = (e) => {
+    const term = e.target.value;
+    setSearchTerm(term);
+  
+    if (term) {
+      setFilteredProducts(
+        products.filter((product) =>
+          product.name.toLowerCase().includes(term.toLowerCase())
+        )
+      );
+    } else {
+      setFilteredProducts([]);
+    }
+  };
+  
+  const handleSearchIconClick = () => {
+    if (searchTerm) {
+      const foundProduct = products.find((product) =>
+        product.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+  
+      if (foundProduct) {
+        navigate(foundProduct.link);
+      } else {
+        alert("Product not found!");
+      }
+    } else {
+      alert("Please enter a search term!");
+    }
+  };
+
+
+  function addToCart(item) {
+    // Retrieve existing cart data from local storage
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  
+    // Check if the item already exists in the cart
+    const existingItem = cart.find(cartItem => cartItem.id === item.id);
+  
+    if (existingItem) {
+        // If the item exists, update the quantity
+        existingItem.quantity += 1;
+        
+        // Create a custom alert div for already added item
+        showAlert(`${item.name} is already in the cart! Quantity updated.`);
+    } else {
+        // Otherwise, add a new item with quantity 1
+        cart.push({ ...item, quantity: 1 });
+        
+        // Create a custom alert div for the first time addition
+        showAlert(`${item.name} added to the cart!`);
+    }
+  
+    // Save the updated cart to local storage
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    // Update state to trigger a re-render and reflect changes in the cart
+    setCartItems(cart);
+}
+
+// Function to display the alert box
+function showAlert(message) {
+    let alertBox = document.createElement('div');
+    alertBox.textContent = message;
+    alertBox.style.position = 'fixed';
+    alertBox.style.top = '20px';
+    alertBox.style.left = '50%';
+    alertBox.style.transform = 'translateX(-50%)'; // Center the box horizontally
+    alertBox.style.padding = '10px';
+    alertBox.style.backgroundColor = '#4CAF50';
+    alertBox.style.color = 'white';
+    alertBox.style.borderRadius = '5px';
+    alertBox.style.zIndex = '1000';
+  
+    // Append alert box to body
+    document.body.appendChild(alertBox);
+  
+    // Remove the alert after 1 second (1000 milliseconds)
+    setTimeout(() => {
+        alertBox.style.transition = 'opacity 0.5s';
+        alertBox.style.opacity = '0';
+        setTimeout(() => {
+            alertBox.remove();
+        }, 800); // Wait for the transition to complete before removing the element
+    }, 1200); // 1.2 second before disappearing
+}
+
+
+
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    // Fetch cart items from localStorage or a backend API
+    const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    setCartItems(storedCart);
+  }, []);
+
+  
+
   return (
     <>
       {/* Header Section */}
@@ -155,32 +293,76 @@ const Home = () => {
     </div>
             <IoIosArrowDown className="text-secondary fs-5 me-3" />
             <div className="separator text-muted mx-2">|</div>
-            <input
-              type="text"
-              className="form-control border-0 bg-transparent"
-              placeholder="Search..."
-            />
+            <div>
+      {/* Search Input */}
+      <input
+        type="text"
+        className="form-control border-0 bg-transparent"
+        placeholder="Search..."
+        value={searchTerm}
+        onChange={handleInputChange}
+      />
+
+      {/* Search Results */}
+      {searchTerm && (
+        <div className="mt-3">
+          <h5>Search Results:</h5>
+          {filteredProducts.length > 0 ? (
+             <ul style={{ listStyle: "none", padding: 0 }}>
+             {filteredProducts.map((product, index) => (
+               <li key={index} style={{ marginBottom: "10px" }}>
+                 <Link
+                   to={product.link}
+                   style={{ textDecoration: "none", color: "#007BFF" }}
+                 >
+                   {product.name}
+                 </Link>
+               </li>
+             ))}
+           </ul>
+          ) : (
+            <p className="text-muted">No products found.</p>
+          )}
+        </div>
+      )}
+    </div>
           </div>
 
           {/* Search and Account Icons */}
           <div className="col-12 col-md-auto d-flex align-items-center justify-content-center gap-3 mt-3 mt-md-0">
-                      <div className="search-menu d-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm p-2"
-                              data-bs-toogle="tooltip"
-                              data-bs-placement="top"
-                              title="Search"
-                              >
-                        <IoIosSearch className="text-primary fs-4" />
-                      </div>
+          <div
+  className="search-menu d-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm p-2 ms-2"
+  data-bs-toggle="tooltip"
+  data-bs-placement="top"
+  title="Search"
+  onClick={handleSearchIconClick} // Only navigates when icon is clicked
+  style={{ cursor: "pointer" }}
+>
+  <IoIosSearch className="text-primary fs-4" />
+</div>
                       <div className="separator  mx-2 text-grey">|</div>
-                      <div className="icon-menu d-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm p-2"
-                                  data-bs-toogle="tooltip"
-                                  data-bs-placement="top"
-                                  title="My Cart"
-                                  >
-                        <Link to="/cart" className="text-primary text-decoration-none">
-                          <IoBagOutline className="fs-4" />
-                        </Link>
-                      </div>
+                      <div
+  className="icon-menu position-relative d-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm p-2"
+  data-bs-toggle="tooltip"
+  data-bs-placement="top"
+  title="My Cart"
+>
+  {/* Link to Cart */}
+  <Link to="/cart" className="text-primary text-decoration-none">
+    <IoBagOutline className="fs-4" />
+  </Link>
+
+  {/* Badge for cart count */}
+  {cartItems.length > 0 && (
+    <span
+      className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+      style={{ fontSize: "0.75rem" }}
+    >
+      {cartItems.reduce((total, item) => total + item.quantity, 0)}
+    </span>
+  )}
+</div>
+
                       <div className="separator  mx-2 text-grey">|</div>
                       <div className="account-menu d-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm p-2"
                                     data-bs-toogle="tooltip"
@@ -370,52 +552,222 @@ const Home = () => {
 {/* New Arrivals Section */}
 <div className="new-arrivals mt-4 ms-3">
   <h2>New Arrivals</h2>
-  <div className="products-carousel d-flex flex-wrap justify-content-start position-relative">
+  <div className="products-carousel  position-relative">
     {/* Previous Button (Hidden on Mobile) */}
     <button
-      className="carousel-button prev position-absolute top-50 start-0 translate-middle-y bg-warning text-white border-0 rounded-circle p-2 d-none d-md-block"
-      onClick={handlePrevNewArrivals}
-    >
-      <IoIosArrowDropleft size={30} />
-    </button>
+  className="carousel-button prev position-absolute top-50 translate-middle-y border-0 d-none d-md-block"
+  onClick={handlePrevNewArrivals}
+  style={{
+    width: '60px',
+    height: '60px',
+    border: '0.5px solid lightgray', // Light, subtle border
+    borderRadius: '50%',
+    backgroundColor: 'transparent',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    left: '-0.5px', // Adjust position
+    zIndex: 5, // Keep the button above other elements
+  }}
+>
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="50"
+    height="50"
+    viewBox="0 0 40 40"
+    fill="none"
+    stroke="black"
+    strokeWidth="1.0"
+  >
+    
+    <circle cx="20" cy="20" r="19" stroke="grey" fill="none" />
+    
+    <path d="M24 28 L16 20 L24 12" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+</button>
+
 
     {/* Products Container */}
-    <div className="products row gx-3 w-100">
-      {newArrivals.slice(currentIndex, currentIndex + 4).map((product) => (
-        <div
-          key={product.id}
-          className="product col-12 col-sm-6 col-md-3 d-flex flex-column align-items-center"
-        >
-          <img
-            src={process.env.PUBLIC_URL + '/' + product.image}
-            alt={product.Name}
-            className="product-image img-fluid mb-2"
-            style={{
-              border: 'none',
-              boxShadow: 'none',
-              marginTop: '20px',
-              overflow: 'hidden',
-              textAlign: 'center',
-              transition: 'transform .3s ease-in-out',
-              width: '200px',
-              height: '200px',
-              objectFit: 'cover',
-            }}
-          />
-          <h3>{product.Name}</h3>
-          <p>Tsh {product.price}</p>
-          <button className="add-to-cart btn btn-primary w-50">Add to Cart</button>
-        </div>
-      ))}
+    <div className="products row gx-3 w-100" style={{ padding: '0 60px' }}>
+  <div className="row gx-4" >
+    {/* Card 1 */}
+    <div className="col-6 col-md-3 mb-4">
+  <div className="card" style={{ width: "100%", borderRadius: "0", overflow: "hidden", border: 'none' }}>
+  <Link to="/karanga">
+    <img
+      src="image/nuts.png" 
+      className="card-img-top"
+      alt="Product"
+      style={{
+        height: "15rem",            // Fixed height for image
+        objectFit: "cover",         // Ensure image covers the area without distortion
+        borderRadius: "10px",          // No rounded corners for image
+        border: "none",             // Remove any border from the image itself
+      }}
+    />
+    </Link>
+    <div className="card-body text-left" >
+      <h5 className="card-title fw-bold" >Cash Karanga</h5>
+      <div className="d-flex justify-content-between align-items-center">
+        <p className="card-text text-muted mb-0">Tsh 14,000</p>
+        <button
+  className="btn btn-primary btn-sm fw-bold"
+  onClick={() =>
+    addToCart({
+      id: 1, // Unique identifier for the item
+      name: "Cash Karanga",
+      price: 14000,
+      unit: "45g",
+      image: "image/nuts.png",
+    })
+  }
+>
+  Add To Cart
+</button>
+      </div>
     </div>
+  </div>
+</div>
+
+
+    {/* Card 2 */}
+    <div className="col-6 col-md-3 mb-4">
+      <div className="card" style={{ width: "100%", borderRadius: "0", overflow: "hidden", border: 'none' }}>
+      <Link to="/asali">
+        <img
+          src="image/asali.png" // Replace with the correct image path
+          className="card-img-top"
+          alt="Product"
+          style={{ height: "15rem", objectFit: "cover", borderRadius: "10px",          // No rounded corners for image
+            border: "none", }}  
+        />
+        </Link>
+        <div className="card-body text-left">
+          <h5 className="card-title fw-bold">Asali asili</h5>
+          <div className="d-flex justify-content-between align-items-center">
+            <p className="card-text text-muted mb-0">Tsh 14,000</p>
+            <button
+  className="btn btn-primary btn-sm fw-bold"
+  onClick={() =>
+    addToCart({
+      id: 2, // Unique identifier for the item
+      name: "Asali asili",
+      price: 14000,
+      unit: "45g",
+      image: "image/asali.png",
+    })
+  }
+>
+  Add To Cart
+</button>          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Card 3 */}
+    <div className="col-6 col-md-3 mb-4">
+      <div className="card" style={{ width: "100%", borderRadius: "0", overflow: "hidden", border: 'none' }}>
+      <Link to="/candle">
+        <img
+          src="image/candle.png" // Replace with the correct image path
+          className="card-img-top"
+          alt="Product"
+          style={{ height: "15rem", objectFit: "cover", borderRadius: "10px",          // No rounded corners for image
+            border: "none", }}
+        />
+        </Link>
+        <div className="card-body text-left">
+          <h5 className="card-title fw-bold">Candle</h5>
+          <div className="d-flex justify-content-between align-items-center">
+            <p className="card-text text-muted mb-0">Tsh 14,000</p>
+            <button
+  className="btn btn-primary btn-sm fw-bold"
+  onClick={() =>
+    addToCart({
+      id: 3, // Unique identifier for the item
+      name: "Candle",
+      price: 14000,
+      unit: "45g",
+      image: "image/candle.png",
+    })
+  }
+>
+  Add To Cart
+</button>          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Card 4 */}
+    <div className="col-6 col-md-3 mb-4">
+      <div className="card" style={{ width: "100%", borderRadius: "0", overflow: "hidden", border: 'none' }}>
+      <Link to="/coconut">
+        <img
+          src="image/coconut.png" // Replace with the correct image path
+          className="card-img-top"
+          alt="Product"
+          style={{ height: "15rem", objectFit: "cover", borderRadius: "10px",          // No rounded corners for image
+            border: "none", }}
+        />
+        </Link>
+        <div className="card-body text-left">
+          <h5 className="card-title fw-bold">Coconut oil</h5>
+          <div className="d-flex justify-content-between align-items-center">
+            <p className="card-text text-muted mb-0">Tsh 14,000</p>
+            <button
+  className="btn btn-primary btn-sm fw-bold"
+  onClick={() =>
+    addToCart({
+      id: 4, // Unique identifier for the item
+      name: "Coconut oil",
+      price: 14000,
+      unit: "45g",
+      image: "image/coconut.png",
+    })
+  }
+>
+  Add To Cart
+</button>          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
     {/* Next Button (Hidden on Mobile) */}
     <button
-      className="carousel-button next position-absolute top-50 end-0 translate-middle-y bg-warning text-white border-0 rounded-circle p-2 d-none d-md-block"
-      onClick={handleNextNewArrivals}
-    >
-      <IoIosArrowDropright size={30} />
-    </button>
+  className="carousel-button next position-absolute top-50  translate-middle-y border-0 d-none d-md-block"
+  onClick={handleNextNewArrivals}
+  style={{
+    width: '60px',
+    height: '60px',
+    border: '1px solid black', // Adds a solid black border
+    borderRadius: '5%',        // Slightly rounded edges
+    backgroundColor: 'transparent', // Transparent background
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    right: '-8px', // Move button further to the right
+    zIndex: 5, // Ensure buttons are above other elements
+  }}
+>
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="50"
+    height="50"
+    viewBox="0 0 40 40"
+    fill="none"
+    stroke="black"
+    strokeWidth="1.0"
+  >
+    
+    <circle cx="20" cy="20" r="19" stroke="grey" fill="none" />
+    
+    <path d="M16 28 L24 20 L16 12" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+
+</button>
   </div>
 </div>
 
@@ -427,41 +779,98 @@ const Home = () => {
   <div className="d-flex align-items-center position-relative">
     {/* Previous Button */}
     <button
-      className="btn btn-outline-warning position-absolute start-0 top-50 translate-middle-y d-none d-md-inline"
-      onClick={handlePrevCategory}
-      style={{ zIndex: 5 }}  
-    >
-      <IoIosArrowDropleft size={30} />
-    </button>
+  className="carousel-button prev position-absolute top-50 translate-middle-y border-0 d-none d-md-block"
+  onClick={handlePrevNewArrivals}
+  style={{
+    width: '90px',
+    height: '90px',
+    border: '1px black',
+    borderRadius: '50%',
+    backgroundColor: 'transparent',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    left: '-6px',
+    
+  }}
+>
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="40"
+    height="40"
+    viewBox="0 0 40 40"
+    fill="none"
+    stroke="black"
+    strokeWidth="1.0"
+  >
+    
+    <circle cx="20" cy="20" r="19" stroke="grey" fill="none" />
+    
+    <path d="M24 28 L16 20 L24 12" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+</button>
 
-    {/* Products Grid */}
-    <div className="row g-2 mx-0">
-      {categories.slice(categoryIndex, categoryIndex + 6).map((product) => (
-        <div key={product.id} className="col-6 col-sm-4 col-md-2 d-flex flex-column align-items-center">
-          <div className="c-product d-flex flex-column align-items-center mx-1">
-            <img
-              src={process.env.PUBLIC_URL + "/" + product.image}
-              alt={product.Name}
-              className="c-product-image img-fluid"
-              style={{
-                objectFit: 'cover',
-                width: '172.28px',    // Fixed width
-                height: '172px',      // Fixed height
-              }}
-            />
-            <h3 className="c-product-name text-center mt-3">{product.Name}</h3>
-          </div>
-        </div>
-      ))}
+   {/* Products Grid */}
+<div className="row g-2 mx-0" style={{ paddingLeft: '75px',padding: '0 40px' }}>
+  {categories.slice(categoryIndex, categoryIndex + 6).map((product) => (
+    <div key={product.id} className="col-6 col-sm-4 col-md-2 d-flex flex-column align-items-center">
+      <div className="c-product d-flex flex-column align-items-center mx-1" style={{ background: 'transparent' }}>
+      <Link to={product.link || '#'}>
+        <img
+          src={process.env.PUBLIC_URL + "/" + product.image}
+          alt={product.Name}
+          className="c-product-image img-fluid"
+          style={{
+            objectFit: 'cover',        // Ensures the image covers its container
+            width: '172.28px',         // Fixed width
+            height: '172px',           // Fixed height
+            background: 'transparent', // Remove any white background
+            border: 'none',
+          }}
+        />
+        </Link>
+        <h3 className="c-product-name text-center mt-3" style={{ fontStyle: 'normal' }}>
+          {product.Name}
+        </h3>
+      </div>
     </div>
+  ))}
+</div>
+
 
     {/* Next Button */}
     <button
-      className="btn btn-outline-warning position-absolute end-0 top-50 translate-middle-y d-none d-md-inline"
-      onClick={handleNextCategory}
-      style={{ zIndex: 5 }}  
+     
+     className="carousel-button next position-absolute top-50  translate-middle-y border-0 d-none d-md-block"
+     onClick={handleNextNewArrivals}
+     style={{
+       width: '90px',
+       height: '90px',
+       border: '1px solid black', // Adds a solid black border
+       borderRadius: '5%',        // Slightly rounded edges
+       backgroundColor: 'transparent', // Transparent background
+       display: 'flex',
+       justifyContent: 'center',
+       alignItems: 'center',
+       right: '-55px',
+       zIndex: '5', 
+     }}
+    
     >
-      <IoIosArrowDropright size={30} />
+    <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="40"
+    height="40"
+    viewBox="0 0 40 40"
+    fill="none"
+    stroke="black"
+    strokeWidth="1.0"
+  >
+    
+    <circle cx="20" cy="20" r="19" stroke="grey" fill="none" />
+    
+    <path d="M16 28 L24 20 L16 12" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
     </button>
   </div>
 </div>
@@ -476,47 +885,70 @@ const Home = () => {
   <div className="col">
     <h2>Featured Products</h2>
   </div>
-  <div className="col text-end" style={{marginRight: '20px'}}>
-    <Link to="/featured-products" className="btn btn-outline-danger">
-      SELL ALL
-    </Link>
-  
-    </div>
+  <div className="col text-end" style={{ marginRight: '20px' }}>
+  <Link 
+    to="/featured-products" 
+    className="btn btn-outline-danger" 
+    style={{ color: 'black', border: '1px solid black' }}
+  >
+    SELL ALL
+  </Link>
+</div>
+
     
   
 
-  <div className="row g-4">
-    {featuredProducts.slice(featuredIndex, featuredIndex + 12).map((product) => (
-      <div key={product.id} className="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div className="card border-0 shadow-sm h-100 text-center">
-          <div
-            className="card-img-container"
+<div className="row g-4" style={{ border: 'none' }}>
+  {featuredProducts.slice(featuredIndex, featuredIndex + 12).map((product) => (
+    <div key={product.id} className="col-6 col-sm-6 col-md-4 col-lg-3">
+      <div className="card border-0 shadow-sm h-100 text-center" style={{ border: 'none' }}>
+        <div
+          className="card-img-container"
+          style={{
+            height: '250px', // Fixed height for the image container
+            overflow: 'hidden', // Ensure images stay within the container
+            borderRadius: '8px',
+            border: 'none',
+          }}
+        >
+          <Link to={product.link || '#'}>
+          <img
+            src={process.env.PUBLIC_URL + '/' + product.image}
+            alt={product.Name}
+            className="card-img-top w-100"
             style={{
-              height: '250px', // Fixed height for the image container
-              overflow: 'hidden', // Ensure images stay within the container
-              borderRadius: '8px',
+              height: '100%', // Makes the image fill the container height
+              objectFit: 'cover',
+              border: 'none', // Ensures the image scales properly
             }}
-          >
-            <img
-              src={process.env.PUBLIC_URL + '/' + product.image}
-              alt={product.Name}
-              className="card-img-top w-100"
-              style={{
-                height: '100%', // Makes the image fill the container height
-                objectFit: 'cover', // Ensures the image scales properly
-              }}
-            />
-          </div>
-          <div className="card-body" >
-            <h5 className="card-title">{product.Name}</h5>
-            <p className="card-text text-muted">Tsh {product.price}</p>
-            <button className="btn btn-primary w-100">Add to Cart</button>
+          />
+          </Link>
+        </div>
+        <div className="card-body" style={{ textAlign: 'left' }}>
+          <h5 className="card-title">{product.Name}</h5>
+          <div className="d-flex justify-content-between align-items-center">
+            <p className="card-text text-muted mb-0">Tsh {product.price}</p>
+            <button
+              className="btn btn-primary btn-sm fw-bold"
+              onClick={() =>
+                addToCart({
+                  id: product.id, // Use the product's unique id
+                  name: product.Name, // Use the product's name
+                  price: product.price, // Use the product's price
+                  unit: product.unit || '1 unit', // Provide the unit (or a default value)
+                  image: product.image, // Use the product's image
+                })
+              }
+            >
+              Add To Cart
+            </button>
           </div>
         </div>
       </div>
-    ))}
-  </div>
-   
+    </div>
+  ))}
+</div>
+
   <div className="description">
           <div className="free-delivery-container">
             <RiShoppingBag4Line size={50} className="delivery-icon" />

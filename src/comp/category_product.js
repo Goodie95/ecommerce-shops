@@ -1,6 +1,7 @@
 
 const Categoryproduct =
 [
+    
     {
         id: 1,
         Name: 'Food & Beverages',
@@ -8,6 +9,7 @@ const Categoryproduct =
         image: 'image/rice.png',
         cat: '',
         type: 'new',
+        link: '/food',
     },
     {
         id: 2,
@@ -16,6 +18,7 @@ const Categoryproduct =
         image: 'image/cosmetics.png',
         cat: '',
         type: 'new',
+        link: '/cosmetics',
     },
     {
         id: 3,
@@ -24,6 +27,7 @@ const Categoryproduct =
         image: 'image/cleaning products.png',
         cat: '',
         type: 'new',
+        link: '/cleaning',
     },
     {
         id: 4,
@@ -32,6 +36,7 @@ const Categoryproduct =
         image: 'image/nuts2.png',
         cat: '',
         type: 'new',
+        link: '/nuts',
     },
     {
         id: 5,
@@ -40,6 +45,7 @@ const Categoryproduct =
         image: 'image/home decor.png',
         cat: '',
         type: 'new',
+        link: '/decor',
     },
     {
         id: 6,
@@ -48,6 +54,7 @@ const Categoryproduct =
         image: 'image/spices.png',
         cat: '',
         type: 'new',
+        link: '/spices',
     },
 ];
 export default Categoryproduct;

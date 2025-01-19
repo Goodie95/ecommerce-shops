@@ -637,7 +637,7 @@ margin-top: 20px;
 }
 
 .sell-all-button {
-  background-color: #f8f0f0;
+  background-color: #030303;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: rgb(1, 0, 0);
   padding: 8px 25px;
@@ -873,6 +873,12 @@ margin-top: 20px;
 .sort-button:hover {
   background-color: #45a049;
 }
+
+.btn:hover {
+  background-color: #45a049 !important;
+}
+
+
 
 /* Placeholder for Product Grid */
 .products-grid {
@@ -2092,10 +2098,10 @@ h1 {
 }
 
 .quantity-controls button {
-  background-color: #ffcc00;
+  background-color: #e4e3dd;
   border: none;
   color: #333;
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: bold;
   padding: 0.4rem 0.8rem;
   margin: 0 0.5rem;
@@ -2108,7 +2114,7 @@ h1 {
 }
 
 .quantity-controls button:hover {
-  background-color: #e6b800;
+  background-color: #dbd7c6;
 }
 
 .remove-btn {
@@ -2156,7 +2162,7 @@ h1 {
 
 .checkout-btn {
   width: 100%;
-  background-color: #28a745;
+  background-color: #1226df;
   color: #fff;
   border: none;
   padding: 0.8rem 1rem;
@@ -2169,7 +2175,7 @@ h1 {
 }
 
 .checkout-btn:hover {
-  background-color: #218838;
+  background-color: #dedee9;
 }
 
 /* Discount Section */
@@ -2188,7 +2194,7 @@ h1 {
 }
 
 .discount-section button {
-  background-color: #007bff;
+  background-color: #a2aab4;
   color: #fff;
   border: none;
   padding: 0.5rem 1rem;
@@ -2281,7 +2287,7 @@ img {
 }
 
 .edit-button {
-  background-color: #007bff;
+  background-color: #EFF7FA;
   color: #fff;
   border: none;
   padding: 8px 16px;
@@ -2569,5 +2575,17 @@ img {
   font-size: 10px;
 }
   
-  
+.custom-button {
+  background-color: white;
+  border: 1px solid #EFF7FA; /* Border color */
+}
+
+.custom-button:hover {
+  background-color: #EFF7FA; /* Hover background color */
+  border-color: #EFF7FA; /* Optional: Change border color on hover */
+}
+
+.arrow {
+  margin-left: 10px; /* Adjust the spacing between text and the arrow */
+}
   

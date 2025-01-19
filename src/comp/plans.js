@@ -10,6 +10,7 @@ import { BiLeaf } from 'react-icons/bi';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './SubscriptionPlans.css';
+import { useNavigate } from "react-router-dom";
 
 const Plans = () => {
   // State for menu visibility
@@ -43,6 +44,126 @@ const Plans = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const navigate = useNavigate();
+
+  const products = [
+    { name: "Cash Karanga", link: "/karanga" },
+    { name: "Asali asili", link: "/asali" },
+    { name: "Candle", link: "/candle" },
+    { name: "Coconut oil", link: "/coconut" },
+    { name: "Bee Honey", link: "/honey" },
+    { name: "Food and Beverages", link: "/food" },
+    { name: "Home Decor", link: "/decor" },
+    { name: "Cosmetics", link: "/cosmetics" },
+    { name: "Spices", link: "/spices" },
+    { name: "Nuts", link: "/nuts" },
+    { name: "Cleaning Products", link: "/cleaning" },
+    { name: "Spice Jiko", link: "/jiko" },
+    { name: "Ateke Kahawa", link: "/kahawa" },
+    { name: "Swahili Chilli", link: "/chili" },
+    { name: "Olive Oil", link: "/olive" },
+  ];
+
+  const handleInputChange = (e) => {
+    const term = e.target.value;
+    setSearchTerm(term);
+  
+    if (term) {
+      setFilteredProducts(
+        products.filter((product) =>
+          product.name.toLowerCase().includes(term.toLowerCase())
+        )
+      );
+    } else {
+      setFilteredProducts([]);
+    }
+  };
+  
+  const handleSearchIconClick = () => {
+    if (searchTerm) {
+      const foundProduct = products.find((product) =>
+        product.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+  
+      if (foundProduct) {
+        navigate(foundProduct.link);
+      } else {
+        alert("Product not found!");
+      }
+    } else {
+      alert("Please enter a search term!");
+    }
+  };
+
+
+     function addToCart(item) {
+        // Retrieve existing cart data from local storage
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      
+        // Check if the item already exists in the cart
+        const existingItem = cart.find(cartItem => cartItem.id === item.id);
+      
+        if (existingItem) {
+            // If the item exists, update the quantity
+            existingItem.quantity += 1;
+            
+            // Create a custom alert div for already added item
+            showAlert(`${item.name} is already in the cart! Quantity updated.`);
+        } else {
+            // Otherwise, add a new item with quantity 1
+            cart.push({ ...item, quantity: 1 });
+            
+            // Create a custom alert div for the first time addition
+            showAlert(`${item.name} added to the cart!`);
+        }
+      
+        // Save the updated cart to local storage
+        localStorage.setItem("cart", JSON.stringify(cart));
+    
+        // Update state to trigger a re-render and reflect changes in the cart
+        setCartItems(cart);
+    }
+    
+    // Function to display the alert box
+    function showAlert(message) {
+        let alertBox = document.createElement('div');
+        alertBox.textContent = message;
+        alertBox.style.position = 'fixed';
+        alertBox.style.top = '20px';
+        alertBox.style.left = '50%';
+        alertBox.style.transform = 'translateX(-50%)'; // Center the box horizontally
+        alertBox.style.padding = '10px';
+        alertBox.style.backgroundColor = '#4CAF50';
+        alertBox.style.color = 'white';
+        alertBox.style.borderRadius = '5px';
+        alertBox.style.zIndex = '1000';
+      
+        // Append alert box to body
+        document.body.appendChild(alertBox);
+      
+        // Remove the alert after 1 second (1000 milliseconds)
+        setTimeout(() => {
+            alertBox.style.transition = 'opacity 0.5s';
+            alertBox.style.opacity = '0';
+            setTimeout(() => {
+                alertBox.remove();
+            }, 800); // Wait for the transition to complete before removing the element
+        }, 1200); // 1.2 second before disappearing
+    }
+    
+    
+    
+      const [cartItems, setCartItems] = useState([]);
+    
+      useEffect(() => {
+        // Fetch cart items from localStorage or a backend API
+        const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+        setCartItems(storedCart);
+      }, []);
 
   return (
     <>
@@ -91,49 +212,95 @@ const Plans = () => {
           </div>
 
           {/* Search Input */}
-          <div className="col-12 col-lg d-flex align-items-center bg-light rounded-pill px-3 py-2 flex-grow-1">
-          <div className="d-flex align-items-center">
-      <span className="text-secondary fw-bold me-3 text-nowrap">All items</span>
-    </div>
-            <IoIosArrowDown className="text-secondary fs-5 me-3" />
-            <div className="separator text-muted mx-2">|</div>
-            <input
-              type="text"
-              className="form-control border-0 bg-transparent"
-              placeholder="Search..."
-            />
+                    <div className="col-12 col-lg d-flex align-items-center bg-light rounded-pill px-3 py-2 flex-grow-1">
+                    <div className="d-flex align-items-center">
+                <span className="text-secondary fw-bold me-3 text-nowrap">All items</span>
+              </div>
+                      <IoIosArrowDown className="text-secondary fs-5 me-3" />
+                      <div className="separator text-muted mx-2">|</div>
+                      <div>
+                {/* Search Input */}
+                <input
+                  type="text"
+                  className="form-control border-0 bg-transparent"
+                  placeholder="Search..."
+                  value={searchTerm}
+                  onChange={handleInputChange}
+                />
+          
+                {/* Search Results */}
+                {searchTerm && (
+                  <div className="mt-3">
+                    <h5>Search Results:</h5>
+                    {filteredProducts.length > 0 ? (
+                       <ul style={{ listStyle: "none", padding: 0 }}>
+                       {filteredProducts.map((product, index) => (
+                         <li key={index} style={{ marginBottom: "10px" }}>
+                           <Link
+                             to={product.link}
+                             style={{ textDecoration: "none", color: "#007BFF" }}
+                           >
+                             {product.name}
+                           </Link>
+                         </li>
+                       ))}
+                     </ul>
+                    ) : (
+                      <p className="text-muted">No products found.</p>
+                    )}
+                  </div>
+                )}
+              </div>
+                    </div>
+          
+                    {/* Search and Account Icons */}
+                    <div className="col-12 col-md-auto d-flex align-items-center justify-content-center gap-3 mt-3 mt-md-0">
+                    <div
+            className="search-menu d-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm p-2 ms-2"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            title="Search"
+            onClick={handleSearchIconClick} // Only navigates when icon is clicked
+            style={{ cursor: "pointer" }}
+          >
+            <IoIosSearch className="text-primary fs-4" />
           </div>
-
-          {/* Search and Account Icons */}
-          <div className="col-12 col-md-auto d-flex align-items-center justify-content-center gap-3 mt-3 mt-md-0">
-            <div className="search-menu d-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm p-2"
-                    data-bs-toogle="tooltip"
-                    data-bs-placement="top"
-                    title="Search"
-                    >
-              <IoIosSearch className="text-primary fs-4" />
-            </div>
-            <div className="separator  mx-2 text-grey">|</div>
-            <div className="icon-menu d-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm p-2"
-                        data-bs-toogle="tooltip"
-                        data-bs-placement="top"
-                        title="My Cart"
-                        >
-              <Link to="/cart" className="text-primary text-decoration-none">
-                <IoBagOutline className="fs-4" />
-              </Link>
-            </div>
-            <div className="separator  mx-2 text-grey">|</div>
-            <div className="account-menu d-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm p-2"
-                          data-bs-toogle="tooltip"
-                          data-bs-placement="top"
-                          title="My Profile"
-                          >
-              <Link to="/signin" className="text-primary text-decoration-none">
-                <IoPersonOutline className="fs-4" />
-              </Link>
-            </div>
+                                <div className="separator  mx-2 text-grey">|</div>
+                                <div
+            className="icon-menu position-relative d-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm p-2"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            title="My Cart"
+          >
+            {/* Link to Cart */}
+            <Link to="/cart" className="text-primary text-decoration-none">
+              <IoBagOutline className="fs-4" />
+            </Link>
+          
+            {/* Badge for cart count */}
+            {cartItems.length > 0 && (
+              <span
+                className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                style={{ fontSize: "0.75rem" }}
+              >
+                {cartItems.reduce((total, item) => total + item.quantity, 0)}
+              </span>
+            )}
           </div>
+          
+                                <div className="separator  mx-2 text-grey">|</div>
+                                <div className="account-menu d-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm p-2"
+                                              data-bs-toogle="tooltip"
+                                              data-bs-placement="top"
+                                              title="My Profile"
+                                              >
+                                  <Link to="/signin" className="text-primary text-decoration-none">
+                                    <IoPersonOutline className="fs-4" />
+                                  </Link>
+                                </div>
+                              
+                              
+                  </div>
         </div>
       </div>
 
