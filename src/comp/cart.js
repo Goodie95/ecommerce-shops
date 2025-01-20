@@ -394,7 +394,7 @@ function Cart() {
                       </button>
                     </div>
                     <p className="fw-bold mb-0" style={{ marginRight: "10px" }}>
-                      Tsh {item.price.toLocaleString()}
+                      Tsh {item.price !== undefined ? item.price.toLocaleString() : "Price not available"}
                     </p>
                   </div>
                 </div>

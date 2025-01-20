@@ -38,6 +38,9 @@ const Home = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null); // Ref for the menu content
   const buttonRef = useRef(null); // Ref for the button
+  const [showFirstSet, setShowFirstSet] = useState(true);  // Shows the first 4 cards
+  const [showSecondSet, setShowSecondSet] = useState(false); // Shows cards from 5th onward
+
   
 
 
@@ -75,22 +78,45 @@ const Home = () => {
   // State for Categories
   const [categories] = useState(Categoryproduct);
   const [categoryIndex, setCategoryIndex] = useState(0);
+  const itemsPerPage = 6; // Number of items visible at a time
+
 
   // State for Featured Products
   const [featuredProducts] = useState(Featuredproduct);
   const [featuredIndex, setFeaturedIndex] = useState(0);
 
-  // Handle the next button for New Arrivals
+  // Handle Next Button Click (To show the second set of cards)
   const handleNextNewArrivals = () => {
-    if (currentIndex < newArrivals.length - 4) {
-      setCurrentIndex(currentIndex + 1);
+    setShowFirstSet(false); // Hide the first 4 cards
+    setShowSecondSet(true); // Show the 5th and subsequent cards
+    if (categoryIndex + itemsPerPage < Categoryproduct.length) {
+      setCategoryIndex(categoryIndex + itemsPerPage);
     }
   };
 
-  // Handle the previous button for New Arrivals
+  // Handle Prev Button Click (To show the first set of cards)
   const handlePrevNewArrivals = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
+    setShowFirstSet(true); // Show the first 4 cards
+    setShowSecondSet(false); // Hide the 5th and subsequent cards
+    if (categoryIndex - itemsPerPage >= 0) {
+      setCategoryIndex(categoryIndex - itemsPerPage);
+    }
+  };
+
+  const handleNext = () => {
+    setShowFirstSet(false); // Hide the first 4 cards
+    setShowSecondSet(true); // Show the 5th and subsequent cards
+    if (categoryIndex + itemsPerPage < Categoryproduct.length) {
+      setCategoryIndex(categoryIndex + itemsPerPage);
+    }
+  };
+
+  // Handle Prev Button Click (To show the first set of cards)
+  const handlePrev = () => {
+    setShowFirstSet(true); // Show the first 4 cards
+    setShowSecondSet(false); // Hide the 5th and subsequent cards
+    if (categoryIndex - itemsPerPage >= 0) {
+      setCategoryIndex(categoryIndex - itemsPerPage);
     }
   };
 
@@ -551,88 +577,57 @@ function showAlert(message) {
   
 {/* New Arrivals Section */}
 <div className="new-arrivals mt-4 ms-3">
-  <h2>New Arrivals</h2>
-  <div className="products-carousel  position-relative">
-    {/* Previous Button (Hidden on Mobile) */}
-    <button
-  className="carousel-button prev position-absolute top-50 translate-middle-y border-0 d-none d-md-block"
-  onClick={handlePrevNewArrivals}
-  style={{
-    width: '60px',
-    height: '60px',
-    border: '0.5px solid lightgray', // Light, subtle border
-    borderRadius: '50%',
-    backgroundColor: 'transparent',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    left: '-0.5px', // Adjust position
-    zIndex: 5, // Keep the button above other elements
-  }}
->
-<svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="50"
-    height="50"
-    viewBox="0 0 40 40"
-    fill="none"
-    stroke="black"
-    strokeWidth="1.0"
-  >
-    
-    <circle cx="20" cy="20" r="19" stroke="grey" fill="none" />
-    
-    <path d="M24 28 L16 20 L24 12" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-</button>
-
-
-    {/* Products Container */}
-    <div className="products row gx-3 w-100" style={{ padding: '0 60px' }}>
-  <div className="row gx-4" >
-    {/* Card 1 */}
-    <div className="col-6 col-md-3 mb-4">
-  <div className="card" style={{ width: "100%", borderRadius: "0", overflow: "hidden", border: 'none' }}>
-  <Link to="/karanga">
-    <img
-      src="image/nuts.png" 
-      className="card-img-top"
-      alt="Product"
-      style={{
-        height: "15rem",            // Fixed height for image
-        objectFit: "cover",         // Ensure image covers the area without distortion
-        borderRadius: "10px",          // No rounded corners for image
-        border: "none",             // Remove any border from the image itself
-      }}
-    />
-    </Link>
-    <div className="card-body text-left" >
-      <h5 className="card-title fw-bold" >Cash Karanga</h5>
-      <div className="d-flex justify-content-between align-items-center">
-        <p className="card-text text-muted mb-0">Tsh 14,000</p>
+      <h2>New Arrivals</h2>
+      <div className="products-carousel position-relative d-flex justify-content-between align-items-center">
+        {/* Previous Button */}
         <button
-  className="btn btn-primary btn-sm fw-bold"
-  onClick={() =>
-    addToCart({
-      id: 1, // Unique identifier for the item
-      name: "Cash Karanga",
-      price: 14000,
-      unit: "45g",
-      image: "image/nuts.png",
-    })
-  }
->
-  Add To Cart
-</button>
-      </div>
-    </div>
-  </div>
-</div>
+          className="carousel-button prev position-absolute top-50 translate-middle-y border-0 d-flex justify-content-center align-items-center"
+          onClick={handlePrevNewArrivals} // Show first 4 cards
+          style={{
+            width: '60px',
+            height: '60px',
+            border: '0.5px solid lightgray',
+            borderRadius: '50%',
+            backgroundColor: 'transparent',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            left: '-0.5px',
+            zIndex: 5,
+          }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 40 40" fill="none" stroke="black" strokeWidth="1.0">
+            <circle cx="20" cy="20" r="19" stroke="grey" fill="none" />
+            <path d="M24 28 L16 20 L24 12" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
 
+        {/* Products Container */}
+        <div className="products row gx-3 gy-4 w-100" style={{ padding: '0 40px' }}>
+          <div className="row gx-3 gy-4">
+            {/* Cards from 1 to 4 (First Set) */}
+            {showFirstSet && (
+              <>
+                <div className="col-6 col-md-3 mb-4">
+                  <div className="card" style={{ width: '100%', borderRadius: '0', overflow: 'hidden', border: 'none',boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
+                    <Link to="/karanga">
+                      <img src="image/nuts.png" className="card-img-top" alt="Product" style={{ height: '15rem', objectFit: 'cover', borderRadius: '10px', border: 'none' }} />
+                    </Link>
+                    <div className="card-body text-left">
+                      <h5 className="card-title fw-bold">Cash Karanga</h5>
+                      <div className="d-flex justify-content-between align-items-center">
+                        <p className="card-text text-muted mb-0">Tsh 14,000</p>
+                        <button className="btn btn-primary btn-sm fw-bold" onClick={() => addToCart({ id: 1, name: 'Cash Karanga', price: 14000, unit: '45g', image: 'image/nuts.png' })}>
+                          Add To Cart
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-    {/* Card 2 */}
+                {/* Card 2 */}
     <div className="col-6 col-md-3 mb-4">
-      <div className="card" style={{ width: "100%", borderRadius: "0", overflow: "hidden", border: 'none' }}>
+      <div className="card" style={{ width: "100%", borderRadius: "0", overflow: "hidden", border: 'none',boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
       <Link to="/asali">
         <img
           src="image/asali.png" // Replace with the correct image path
@@ -666,7 +661,7 @@ function showAlert(message) {
 
     {/* Card 3 */}
     <div className="col-6 col-md-3 mb-4">
-      <div className="card" style={{ width: "100%", borderRadius: "0", overflow: "hidden", border: 'none' }}>
+      <div className="card" style={{ width: "100%", borderRadius: "0", overflow: "hidden", border: 'none',boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
       <Link to="/candle">
         <img
           src="image/candle.png" // Replace with the correct image path
@@ -700,7 +695,7 @@ function showAlert(message) {
 
     {/* Card 4 */}
     <div className="col-6 col-md-3 mb-4">
-      <div className="card" style={{ width: "100%", borderRadius: "0", overflow: "hidden", border: 'none' }}>
+      <div className="card" style={{ width: "100%", borderRadius: "0", overflow: "hidden", border: 'none',boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
       <Link to="/coconut">
         <img
           src="image/coconut.png" // Replace with the correct image path
@@ -731,105 +726,212 @@ function showAlert(message) {
         </div>
       </div>
     </div>
-  </div>
-</div>
+              </>
+            )}
 
+            {/* Cards from 5th onwards (Second Set) */}
+            {showSecondSet && (
+              <>
+                <div className="col-6 col-md-3 mb-4">
+                  <div className="card" style={{ width: '100%', borderRadius: '0', overflow: 'hidden', border: 'none',boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
+                    <Link to="/coconut">
+                      <img src="image/coconut.png" className="card-img-top" alt="Product" style={{ height: '15rem', objectFit: 'cover', borderRadius: '10px', border: 'none' }} />
+                    </Link>
+                    <div className="card-body text-left">
+                      <h5 className="card-title fw-bold">Coconut oil</h5>
+                      <div className="d-flex justify-content-between align-items-center">
+                        <p className="card-text text-muted mb-0">Tsh 14,000</p>
+                        <button className="btn btn-primary btn-sm fw-bold" onClick={() => addToCart({ id: 4, name: 'Coconut oil', price: 14000, unit: '45g', image: 'image/coconut.png' })}>
+                          Add To Cart
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-    {/* Next Button (Hidden on Mobile) */}
-    <button
-  className="carousel-button next position-absolute top-50  translate-middle-y border-0 d-none d-md-block"
-  onClick={handleNextNewArrivals}
-  style={{
-    width: '60px',
-    height: '60px',
-    border: '1px solid black', // Adds a solid black border
-    borderRadius: '5%',        // Slightly rounded edges
-    backgroundColor: 'transparent', // Transparent background
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    right: '-8px', // Move button further to the right
-    zIndex: 5, // Ensure buttons are above other elements
-  }}
+                {/* Card 2 */}
+    
+
+    {/* Card 3 */}
+    <div className="col-6 col-md-3 mb-4">
+      <div className="card" style={{ width: "100%", borderRadius: "0", overflow: "hidden", border: 'none',boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
+      <Link to="/candle">
+        <img
+          src="image/candle.png" // Replace with the correct image path
+          className="card-img-top"
+          alt="Product"
+          style={{ height: "15rem", objectFit: "cover", borderRadius: "10px",          // No rounded corners for image
+            border: "none", }}
+        />
+        </Link>
+        <div className="card-body text-left">
+          <h5 className="card-title fw-bold">Candle</h5>
+          <div className="d-flex justify-content-between align-items-center">
+            <p className="card-text text-muted mb-0">Tsh 14,000</p>
+            <button
+  className="btn btn-primary btn-sm fw-bold"
+  onClick={() =>
+    addToCart({
+      id: 3, // Unique identifier for the item
+      name: "Candle",
+      price: 14000,
+      unit: "45g",
+      image: "image/candle.png",
+    })
+  }
 >
-<svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="50"
-    height="50"
-    viewBox="0 0 40 40"
-    fill="none"
-    stroke="black"
-    strokeWidth="1.0"
-  >
-    
-    <circle cx="20" cy="20" r="19" stroke="grey" fill="none" />
-    
-    <path d="M16 28 L24 20 L16 12" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
+  Add To Cart
+</button>          </div>
+        </div>
+      </div>
+    </div>
 
-</button>
-  </div>
-</div>
+    {/* Card 4 */}
+    <div className="col-6 col-md-3 mb-4">
+      <div className="card" style={{ width: "100%", borderRadius: "0", overflow: "hidden", border: 'none',boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
+      <Link to="/coconut">
+        <img
+          src="image/coconut.png" // Replace with the correct image path
+          className="card-img-top"
+          alt="Product"
+          style={{ height: "15rem", objectFit: "cover", borderRadius: "10px",          // No rounded corners for image
+            border: "none", }}
+        />
+        </Link>
+        <div className="card-body text-left">
+          <h5 className="card-title fw-bold">Coconut oil</h5>
+          <div className="d-flex justify-content-between align-items-center">
+            <p className="card-text text-muted mb-0">Tsh 14,000</p>
+            <button
+  className="btn btn-primary btn-sm fw-bold"
+  onClick={() =>
+    addToCart({
+      id: 4, // Unique identifier for the item
+      name: "Coconut oil",
+      price: 14000,
+      unit: "45g",
+      image: "image/coconut.png",
+    })
+  }
+>
+  Add To Cart
+</button>          </div>
+        </div>
+      </div>
+    </div>
+              </>
+            )}
+          </div>
+        </div>
+
+        {/* Next Button */}
+        <button
+          className="carousel-button next position-absolute top-50 translate-middle-y border-0 d-flex justify-content-center align-items-center "
+          onClick={handleNextNewArrivals} // Show second set of cards
+          style={{
+            width: '60px',
+            height: '60px',
+            border: '1px solid black',
+            borderRadius: '5%',
+            backgroundColor: 'transparent',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            right: '-3px',
+            zIndex: 5,
+          }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 40 40" fill="none" stroke="black" strokeWidth="1.0">
+            <circle cx="20" cy="20" r="19" stroke="grey" fill="none" />
+            <path d="M16 28 L24 20 L16 12" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
 
 
 {/* Shop by Category */}
 <div className="shop-by-category container-fluid py-5">
-  <h2 className="text-center mb-4">Shop by Category</h2>
+      <h2 className="text-center mb-4">Shop by Category</h2>
 
-  <div className="d-flex align-items-center position-relative">
-    {/* Previous Button */}
-    <button
-  className="carousel-button prev position-absolute top-50 translate-middle-y border-0 d-none d-md-block"
-  onClick={handlePrevNewArrivals}
-  style={{
-    width: '90px',
-    height: '90px',
-    border: '1px black',
-    borderRadius: '50%',
-    backgroundColor: 'transparent',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    left: '-6px',
-    
-  }}
->
-<svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="40"
-    height="40"
-    viewBox="0 0 40 40"
-    fill="none"
-    stroke="black"
-    strokeWidth="1.0"
-  >
-    
-    <circle cx="20" cy="20" r="19" stroke="grey" fill="none" />
-    
-    <path d="M24 28 L16 20 L24 12" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-</button>
-
-   {/* Products Grid */}
-<div className="row g-2 mx-0" style={{ paddingLeft: '75px',padding: '0 40px' }}>
-  {categories.slice(categoryIndex, categoryIndex + 6).map((product) => (
-    <div key={product.id} className="col-6 col-sm-4 col-md-2 d-flex flex-column align-items-center">
-      <div className="c-product d-flex flex-column align-items-center mx-1" style={{ background: 'transparent' }}>
-      <Link to={product.link || '#'}>
-        <img
-          src={process.env.PUBLIC_URL + "/" + product.image}
-          alt={product.Name}
-          className="c-product-image img-fluid"
+      <div className="d-flex align-items-center position-relative">
+        {/* Previous Button */}
+        <button
+          className="carousel-button prev position-absolute top-50 translate-middle-y border-0"
+          onClick={handlePrev}
           style={{
-            objectFit: 'cover',        // Ensures the image covers its container
-            width: '172.28px',         // Fixed width
-            height: '172px',           // Fixed height
-            background: 'transparent', // Remove any white background
-            border: 'none',
+            width: '90px',
+            height: '90px',
+            border: '1px solid black',
+            borderRadius: '50%',
+            backgroundColor: 'transparent',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            left: '-50px',
+            zIndex: 5,
           }}
-        />
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+            stroke="black"
+            strokeWidth="1.0"
+          >
+            <circle cx="20" cy="20" r="19" stroke="grey" fill="none" />
+            <path d="M24 28 L16 20 L24 12" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
+
+        {/* Products Grid */}
+        <div className="row g-2 mx-0" style={{ padding: '0 40px' }}>
+  {Categoryproduct.slice(categoryIndex, categoryIndex + itemsPerPage).map((product) => (
+    <div
+      key={product.id}
+      className="col-6 col-sm-4 col-md-2 d-flex flex-column align-items-center"
+      style={{
+        maxWidth: '200px', // Ensures consistent card width
+        margin: 'auto', // Center-aligns cards horizontally
+        marginBottom: '15px', // Space between rows
+      }}
+    >
+      <div
+        className="c-product d-flex flex-column align-items-center mx-1"
+        style={{
+          background: 'transparent',
+          padding: '10px', // Adds padding inside the card for spacing
+          border: '1px solid #ddd', // Optional: Adds a light border for better visibility
+          borderRadius: '8px', // Smooth edges for a modern look
+          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', // Subtle shadow for depth
+          transition: 'transform 0.3s ease', // Smooth hover animation
+        }}
+      >
+        <Link to={product.link || '#'}>
+          <img
+            src={process.env.PUBLIC_URL + '/' + product.image}
+            alt={product.Name}
+            className="c-product-image img-fluid"
+            style={{
+              objectFit: 'cover',
+              width: '100%', // Image adjusts to card's width
+              height: '172px',
+              borderRadius: '5px', // Optional: Rounded corners for images
+            }}
+          />
         </Link>
-        <h3 className="c-product-name text-center mt-3" style={{ fontStyle: 'normal' }}>
+        <h3
+          className="c-product-name text-center mt-3"
+          style={{
+            fontStyle: 'normal',
+            fontSize: '14px', // Consistent font size
+            fontWeight: '600',
+            color: '#333',
+          }}
+        >
           {product.Name}
         </h3>
       </div>
@@ -838,42 +940,40 @@ function showAlert(message) {
 </div>
 
 
-    {/* Next Button */}
-    <button
-     
-     className="carousel-button next position-absolute top-50  translate-middle-y border-0 d-none d-md-block"
-     onClick={handleNextNewArrivals}
-     style={{
-       width: '90px',
-       height: '90px',
-       border: '1px solid black', // Adds a solid black border
-       borderRadius: '5%',        // Slightly rounded edges
-       backgroundColor: 'transparent', // Transparent background
-       display: 'flex',
-       justifyContent: 'center',
-       alignItems: 'center',
-       right: '-55px',
-       zIndex: '5', 
-     }}
-    
-    >
-    <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="40"
-    height="40"
-    viewBox="0 0 40 40"
-    fill="none"
-    stroke="black"
-    strokeWidth="1.0"
-  >
-    
-    <circle cx="20" cy="20" r="19" stroke="grey" fill="none" />
-    
-    <path d="M16 28 L24 20 L16 12" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-    </button>
-  </div>
-</div>
+        {/* Next Button */}
+        <button
+          className="carousel-button next position-absolute top-50 translate-middle-y border-0"
+          onClick={handleNext}
+          style={{
+            width: '90px',
+            height: '90px',
+            border: '1px solid black',
+            borderRadius: '50%',
+            backgroundColor: 'transparent',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            right: '-50px',
+            zIndex: 5,
+          }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+            stroke="black"
+            strokeWidth="1.0"
+          >
+            <circle cx="20" cy="20" r="19" stroke="grey" fill="none" />
+            <path d="M16 28 L24 20 L16 12" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+
 
 
 

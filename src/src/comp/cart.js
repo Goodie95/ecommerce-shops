@@ -214,9 +214,9 @@ const Cart = () => {
             style={{ maxWidth: '100px', marginRight: '1rem' }}
           />
           <div className="item-details flex-grow-1">
-            <h2>{item.name}</h2>
+            <h2>{item.name || "Unknown Item"}</h2>
             <p>Unit: {item.unit}</p>
-            <p className="item-price">Tsh {item.price.toLocaleString()}</p>
+            <p className="item-price">Tsh {item.price !== undefined ? item.price.toLocaleString() : "Price not available"}</p>
             <div className="quantity-controls d-flex align-items-center">
               <button
                 className="btn btn-sm btn-outline-primary"

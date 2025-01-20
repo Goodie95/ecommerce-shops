@@ -56,5 +56,32 @@ const Categoryproduct =
         type: 'new',
         link: '/spices',
     },
+    {
+        id: 4,
+        Name: 'Nuts',
+        price: '14,000',
+        image: 'image/nuts2.png',
+        cat: '',
+        type: 'new',
+        link: '/nuts',
+    },
+    {
+        id: 5,
+        Name: 'Home Decor',
+        price: '14,000',
+        image: 'image/home decor.png',
+        cat: '',
+        type: 'new',
+        link: '/decor',
+    },
+    {
+        id: 2,
+        Name: 'Cosmetics',
+        price: '14,000',
+        image: 'image/cosmetics.png',
+        cat: '',
+        type: 'new',
+        link: '/cosmetics',
+    },
 ];
 export default Categoryproduct;
