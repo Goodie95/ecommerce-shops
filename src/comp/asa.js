@@ -380,8 +380,8 @@ const [cartItems, setCartItems] = useState([]);
     fontStyle: 'normal',
     wordWrap: 'break-word', // Ensures long words break into the next line
     overflow: 'hidden',    // Prevents text overflow outside the container
-    textAlign: 'center',   // Optional: Centers the text in the container
-    fontSize: '16px',      // Adjust font size for better readability on mobile
+    textAlign: 'left',   // Optional: Centers the text in the container
+    fontSize: '50px',      // Adjust font size for better readability on mobile
   }}
 >
   Tsh 2,300,000.00
