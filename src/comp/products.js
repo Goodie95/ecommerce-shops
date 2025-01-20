@@ -471,14 +471,14 @@ const [cartItems, setCartItems] = useState([]);
           <div className="products-container">
   <div className="row gx-4">
     {filteredProducts.map((product, index) => (
-      <div key={index} className="col-6 col-md-4 mb-4">
-        <div className="card" style={{ width: "18rem", borderRadius: "10px", overflow: "hidden" }}>
+      <div key={index} className="col-6 col-sm-6 col-md-4">
+        <div className="card h-100" style={{ boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", borderRadius: "10px", overflow: "hidden" }}>
           <Link to={product.link}>
             <img
               src={product.image} // Assuming product.image contains the image path
               className="card-img-top"
               alt={product.name}
-              style={{ height: "15rem", objectFit: "cover" }}
+              style={{ height: "200px", objectFit: "cover" }}
             />
           </Link>
           <div className="card-body text-left">

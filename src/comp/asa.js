@@ -374,9 +374,18 @@ const [cartItems, setCartItems] = useState([]);
               <p className="w-100">
                 <strong>Status:</strong> <span className="text-success">In stock</span>
               </p>
-              <h3 className="text-primary w-100" style={{ fontStyle: 'normal' }}>
-                Tsh 2,300,000.00
-              </h3>
+              <h3
+  className="text-primary w-100 text-truncate"
+  style={{
+    fontStyle: 'normal',
+    wordWrap: 'break-word', // Ensures long words break into the next line
+    overflow: 'hidden',    // Prevents text overflow outside the container
+    textAlign: 'center',   // Optional: Centers the text in the container
+    fontSize: '16px',      // Adjust font size for better readability on mobile
+  }}
+>
+  Tsh 2,300,000.00
+</h3>
               <p className="w-100">
                 Lorem ipsum dolor sit amet consectetur. Amet vitae nec facilisis leo
                 pellentesque eget imperdiet amet. Elementum leo nunc velit arcu fin

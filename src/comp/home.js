@@ -980,7 +980,7 @@ function showAlert(message) {
 
 
        {/* Featured Products */}
-<div className="featured-products container mt-5" style={{marginBottom: '20px'}}>
+<div className="featured-products container mt-5" style={{marginBottom: '20px', width: '100%'}}>
   <div className="row align-items-center mb-3" >
   <div className="col">
     <h2>Featured Products</h2>
