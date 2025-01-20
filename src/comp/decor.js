@@ -365,7 +365,16 @@ const Cart = () => {
         <p className="w-100">
           <strong>Status:</strong> <span className="text-success">In stock</span>
         </p>
-        <h3 className="text-primary w-100" style={{ fontStyle: 'normal' }}>
+        <h3
+  className="text-primary w-100 text-truncate"
+  style={{
+    fontStyle: 'normal',
+    wordWrap: 'break-word', // Ensures long words break into the next line
+    overflow: 'hidden',    // Prevents text overflow outside the container
+    textAlign: 'left',   // Optional: Centers the text in the container
+    fontSize: '40px',      // Adjust font size for better readability on mobile
+  }}
+>
   Tsh 2,300,000.00
 </h3>
         <p className="w-100">
